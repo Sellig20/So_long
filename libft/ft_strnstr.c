@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/20 16:07:31 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/05/20 16:02:43 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/05/20 16:03:24 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	ft_read_infile(char *infile)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int i;
+	size_t	i;
+	size_t	j;
 
+	j = 0;
+	if (!needle[j])
+		return ((char *)haystack);
 	i = 0;
-	while (infile[i])
+	while (haystack[i] && i < len)
 	{
-		if (!(ft_strnstr(infile[i], ".ber", 4)))
-		{
-			write(2, "Error : Invalid extension for the map", 37);
-		}
+		j = 0;
+		while (haystack[i + j] && (i + j < len) && needle[j]
+			&& haystack[i + j] == needle[j])
+			j++;
+		if (needle[j] == '\0')
+			return ((char *)(haystack + i));
+		i++;
 	}
-	open(infile, O_RDONLY);
-	return (0);
+	return (NULL);
 }
