@@ -6,42 +6,49 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/05/20 16:04:45 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/05/24 17:36:47 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME					=	so_long
 
-SRCS					=	so_long.c \
+SRC					=	so_long.c \
 							parsing.c \
 							get_next_line/get_next_line.c \
-							get_next_line/get_next_line.h \
 							get_next_line/get_next_line_utils.c \
-							libft/ft_strnstr.c \
 
-OBJS					=	${SRCS:.c=.o}
+LIBFT = ./libft/libft.a
 
-CC						=	clang
+NAME = so_long
 
-CFLAGS					=	-Wall -Wextra -Werror
+MLX = ./mlx/libmlx.a
 
-RM						=	rm -rf
+CC = clang
 
-all		:	${NAME}
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME)	:	$(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+OBJ = $(SRC:.c=.o)
 
-%.o		:	%.c
-		$(CC) $(CFLAGS)	-c	$<	-o	$@
+FL_MLX	=	 -ldl -lmlx -Lmlx -lm -lXext -lX11 -Imlx mlx/libmlx.a
 
-clean	:
-		${RM}	${OBJS}
+all: $(NAME)
 
-fclean	:	clean
-		${RM}	${NAME}
+$(NAME): $(OBJ)
+	$(MAKE) -C ./libft
+	$(MAKE) -C ./mlx
+	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -o $(NAME)  $(LIBFT) $(MLX) -g
 
-re:	fclean	all
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@
+clean:
+	# $(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./mlx
+	rm -f $(OBJ)
 
-.PHONY:	all	clean	fclean	re
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: clean fclean re

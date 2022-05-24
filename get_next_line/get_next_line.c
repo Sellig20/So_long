@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecolmou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:36:31 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/01/10 12:13:47 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:36:24 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../so_long.h"
 
 char	*ft_read_text(int fd, char *final)
 {
@@ -18,7 +18,7 @@ char	*ft_read_text(int fd, char *final)
 	char	*buf;
 	char	*tmp;
 
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = malloc(sizeof(char) * 2);
 	if (!buf)
 		return (0);
 	var_read = 1;
@@ -115,7 +115,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*buf;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (0);
 	buf = ft_read_text(fd, buf);
 	if (!buf)

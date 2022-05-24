@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/20 16:03:18 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:37:21 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include "libft/libft.h"
 
 //////////STRUCTURE//////////
 typedef struct s_data t_data;
@@ -30,9 +31,6 @@ struct	s_data
 {
 	int		file;
 };
-
-//////////LIBFT//////////
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 //////////GET_NEXT_LINE//////////
 int		ft_strlen(char *str);

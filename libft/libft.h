@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:02:43 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/24 14:03:50 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/05/24 13:59:44 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/05/24 17:34:40 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
-{
-	size_t	i;
-	size_t	j;
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-	j = 0;
-	if (!needle[j])
-		return ((char *)haystack);
-	i = 0;
-	while (haystack[i] && i < len)
-	{
-		j = 0;
-		while (haystack[i + j] && (i + j < len) && needle[j]
-			&& haystack[i + j] == needle[j])
-			j++;
-		if (needle[j] == '\0')
-			return ((char *)(haystack + i));
-		i++;
-	}
-	return (NULL);
-}
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+char	**ft_split(char const *s, char c);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+#endif
+

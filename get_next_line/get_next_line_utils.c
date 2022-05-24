@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecolmou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:38:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/01/10 12:56:15 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:36:47 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../so_long.h"
 
 int	ft_is_a_line(char *str)
 {
@@ -43,7 +43,7 @@ int	ft_read_buffer(int fd, char *buf)
 {
 	int	var_read;
 
-	var_read = read(fd, buf, BUFFER_SIZE);
+	var_read = read(fd, buf, 1);
 	return (var_read);
 }
 
