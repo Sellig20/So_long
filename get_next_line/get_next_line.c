@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:36:31 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/24 13:36:24 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:34:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ft_save_line(char *str)
 		free(str);
 		return (0);
 	}
-	final = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	final = malloc(sizeof(char) * (ft_strlen_gnl(str) - i + 1));
 	if (!final)
 	{
 		free(str);
@@ -110,11 +110,13 @@ char	*ft_save_line(char *str)
 	return (final);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int reset)
 {
 	char		*line;
 	static char	*buf;
 
+	if (reset)
+		return (free(buf), NULL);
 	if (fd < 0)
 		return (0);
 	buf = ft_read_text(fd, buf);
@@ -122,11 +124,7 @@ char	*get_next_line(int fd)
 		return (0);
 	line = ft_extract_line(buf);
 	if (!line)
-	{
-		if (buf)
-			free(buf);
 		return (0);
-	}
 	buf = ft_save_line(buf);
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/24 17:37:21 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/26 18:43:25 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,22 @@ typedef struct s_data t_data;
 struct	s_data
 {
 	int		file;
+	char	*str;
+	int		index_line;
 };
 
 //////////GET_NEXT_LINE//////////
-int		ft_strlen(char *str);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_read_buffer(int fd, char *buf);
-char	*get_next_line(int fd);
-int		ft_is_a_line(char *str);
-char	*ft_extract_line(char *s1);
-char	*ft_save_line(char *str);
-char	*get_next_line(int fd);
+int			ft_strlen_gnl(char *str);
+int			ft_read_buffer(int fd, char *buf);
+int			ft_is_a_line(char *str);
+char		*ft_strjoin(char *s1, char *s2);
+char		*get_next_line(int fd, int reset);
+char		*ft_read_text(int fd, char *final);
+char		*ft_extract_line(char *s1);
+char		*ft_save_line(char *str);
 
 //////////SO_LONG//////////
 int	ft_read_infile(char *infile);
+int	ft_parsing_map(char	**map);
+
 #endif

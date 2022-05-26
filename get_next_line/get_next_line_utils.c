@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:38:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/24 13:36:47 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:29:59 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	ft_is_a_line(char *str)
 		return (0);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen_gnl(char *str)
 {
 	int	i;
 
-	i = 0;
 	if (!str)
 		return (0);
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -66,7 +66,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	final = malloc(sizeof(char) * (ft_strlen(s1) + (ft_strlen(s2)) + 1));
+	final = malloc(sizeof(char) * (ft_strlen_gnl(s1)
+				+ (ft_strlen_gnl(s2)) + 1));
 	if (!final)
 		free_join(final, i);
 	while (s1 && (char)s1[i])

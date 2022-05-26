@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 13:59:44 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/26 18:05:23 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/05/26 18:04:57 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/05/26 18:05:11 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+char	*ft_itoa(int nb)
+{
+	char	*str;
+	long	n;
+	int		len;
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-char	**ft_split(char const *s, char c);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int	ft_strlen(char *str);
-int	ft_int_len(long nb);
-char	*ft_itoa(int nb);
-
-#endif
-
+	n = nb;
+	len = ft_int_len(n);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	if (n == 0)
+		str[0] = 48;
+	else if (n < 0)
+	{
+		str[0] = '-';
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		str[len] = (n % 10) + 48;
+		n = n / 10;
+		len--;
+	}
+	return (str);
+}
