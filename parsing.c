@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/26 18:48:34 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:08:28 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	ft_parsing_map(char	**map)
 	j = 0;
 	while (map[i])
 	{
-		while (map[i][j])
-		{
+		//while (map[i][j])
+		//{
 			printf("MAP[i] = %s\n", map[i]);
 			if (!(ft_strnstr(map[i], "P", 100)))
 			{
@@ -55,8 +55,8 @@ int	ft_parsing_map(char	**map)
 			}
 			// else
 			// 	printf("found it !\n");
-			j++;
-		}
+		//	j++;
+		//}
 		i++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 13:58:35 by jecolmou          #+#    #+#              #
-#    Updated: 2022/05/26 18:05:30 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/05/27 17:41:47 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRCS		= ft_split.c \
 				ft_strlen.c \
 				ft_int_len.c \
 				ft_itoa.c \
+				ft_strjoin.c \
+				ft_strcpy.c \
 
 OBJS		= ${SRCS:.c=.o}
 

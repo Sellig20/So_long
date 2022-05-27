@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/26 18:43:25 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:12:52 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ struct	s_data
 int			ft_strlen_gnl(char *str);
 int			ft_read_buffer(int fd, char *buf);
 int			ft_is_a_line(char *str);
-char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoin_gnl(char *s1, char *s2);
 char		*get_next_line(int fd, int reset);
 char		*ft_read_text(int fd, char *final);
 char		*ft_extract_line(char *s1);
