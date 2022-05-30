@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/05/24 17:36:47 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/05/30 18:12:16 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC					=	so_long.c \
 							parsing.c \
 							get_next_line/get_next_line.c \
 							get_next_line/get_next_line_utils.c \
+							linked_lists/ft_add_back.c \
 
 LIBFT = ./libft/libft.a
 
