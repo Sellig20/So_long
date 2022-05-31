@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 18:07:37 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/31 13:05:49 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/05/31 16:43:28 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/05/31 16:45:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_map	*ft_add_back(t_map *a_list, char *value)
+int	ft_lstsize(t_map **lst)
 {
-	t_map	*a;
-	t_map	*tmp;
+	int			count;
+	t_map	*buffer;
 
-	a = malloc(sizeof(t_map) + 1);
-	tmp = NULL;
-	tmp = a_list;
-	if (a != NULL)
+	count = 0;
+	buffer = *lst;
+	while (buffer)
 	{
-		a->x = value;
-		a->next = NULL;
+		buffer = buffer->next;
+		count++;
 	}
-	if (!tmp)
-		a_list = a;
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = a;
-	}
-	return (a_list);
+	return (count);
 }

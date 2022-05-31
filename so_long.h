@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/30 18:48:39 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:46:00 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,21 @@ struct	s_data
 	int		file;
 	char	*str;
 	int		index_line;
+	int		count_p;
+	int		count_e;
 };
 
 typedef struct s_map	t_map;
 
 struct s_map
 {
-	char	*map;
+	char	*x;
 	t_map	*next;
 };
 
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
+int		ft_lstsize(t_map **lst);
 
 //////////GET_NEXT_LINE//////////
 int			ft_strlen_gnl(char *str);
@@ -57,6 +60,8 @@ char		*ft_save_line(char *str);
 
 //////////SO_LONG//////////
 int	ft_read_infile(char *infile);
-int	ft_parsing_map(t_map *map);
+int	ft_parsing_map(t_map **map, t_data *x, char *c);
+int ft_return_count(int count);
+int	ft_check_doublons(t_map **liste);
 
 #endif

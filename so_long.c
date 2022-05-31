@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/30 18:48:04 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:53:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int main(int argc, char **argv)
 	t_map	*tab;
 	int		len;
 	int		i;
+	int count;
 
+	count = 0;
 	i = 0;
 	tab = NULL;
 	x.index_line = 0;
@@ -35,19 +37,18 @@ int main(int argc, char **argv)
 			tab = ft_add_back(tab, x.str);
 			x.str = get_next_line(x.file, 0);
 		}
-
 	}
-	while (tab)
-	{
-		printf("tab = %s\n", tab->map);
-		tab = tab->next;
-	}
-	if (ft_parsing_map(tab) == 0)
-			write(2, "Error : missing character\n", 26);
+	// while (tab)
+	// {
+	// 	printf("tab = %s\n", tab->x);
+	// 	tab = tab->next;
+	// }
+	count = ft_parsing_map(&tab, &x, "P");
+	printf("count = %d\n", count);
+	ft_return_count(count);
 	len = x.index_line;
 	return (0);
 }
-
 	// printf("tab = %s\n", x.str);
 	// 		tab = ft_split(x.str, '\n');
 	// 		x.index_line++;
