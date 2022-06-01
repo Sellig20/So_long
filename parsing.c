@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/01 15:42:29 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:26:34 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_read_infile(char *infile)
 	return (1);
 }
 
-int	ft_check_doublons(t_map **liste)
+int	ft_check_doublons_p(t_map **liste)
 {
 	int i = 0;
 	int j;
@@ -50,8 +50,6 @@ int	ft_check_doublons(t_map **liste)
 			j = i + 1;
 			while (str[j])
 			{
-				//printf("str[i] = %s\n", str);
-				//printf("I = %c\n", str[i]);
 				if (str[i] == 'P' && str[j] == 'P')
 					return(0);
 				j++;
@@ -63,58 +61,14 @@ int	ft_check_doublons(t_map **liste)
 	return (1);
 }
 
-
-
-
-
-
-
-
-
-
-
-// int	ft_check(t_map **liste)
-// {
-// 	t_map	*save1;
-// 	t_map	*save2;
-// 	int i;
-// 	//int j;
-// 	//char *c = "P";
-
-// 	save2 = NULL;
-// 	i = 0;
-// 	save1 = *liste;
-// 	save2 = ft_add_back(save2, save1->x);
-// 	while (i < ft_strlen(save2->x))
-// 	{
-// 		printf("save2 = %c\n", save2->x[i]);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
-int	ft_parsing_map(t_map **tab, t_data *x, char *c)
+int	ft_parsing_map_p(t_map **tab, t_data *x, char *c)
 {
-	// t_map *tmp;
 	t_map *map;
-//	int res;
-	int j;
-	int size;
-	// int i = 0;
-	j = 0;
+
 	map = *tab;
-	size = ft_lstsize(&map);
-	(void)c;
-	// while (j < size && map)
-	// {
-	// 	res = ft_check(&map);
-	// 	map = map->next;
-	// 	j++;
-	// }
-	// printf("res = %d\n", res);
 	while (map)
 	{
-		if (ft_check_doublons(&map) == 0)
+		if (ft_check_doublons_p(&map) == 0)
 			x->count_p++;
 		if ((ft_strncmp(c, "P", 1) == 0 && ft_strnstr(map->x, c, 1000)))
 		 	x->count_p++;
@@ -123,14 +77,43 @@ int	ft_parsing_map(t_map **tab, t_data *x, char *c)
 	return (x->count_p);
 }
 
-int ft_return_count(int count)
+int	ft_parsing_map_e(t_map **tab, t_data *x, char *c)
 {
-	if (count < 1)
+	t_map *map;
+
+	map = *tab;
+	while (map)
 	{
-		write(2, "Error : missing character\n", 26);
+		if ((ft_strncmp(c, "E", 1) == 0 && ft_strnstr(map->x, c, 1000)))
+		 	x->count_e++;
+		map = map->next;
+	}
+	return (x->count_e);
+}
+
+int ft_return_count_e(t_data *x)
+{
+	if (x->count_e < 1)
+	{
+		write(2, "Error : missing E character\n", 28);
 		return (0);
 	}
-	else if (count == 1)
+	else if (x->count_e == 1)
+	{
+		write(2, "E is here\n", 10);
+		return (1);
+	}
+	return (1);
+}
+
+int ft_return_count_p(t_data *x)
+{
+	if (x->count_p < 1)
+	{
+		write(2, "Error : missing P character\n", 28);
+		return (0);
+	}
+	else if (x->count_p == 1)
 	{
 		write(2, "P is here\n", 10);
 		return (1);
@@ -142,3 +125,34 @@ int ft_return_count(int count)
 	}
 	return (1);
 }
+
+int ft_is_rectangle(t_map **tab, t_data *x)
+{
+	t_map *map;
+	char	*str;
+	(void)x;
+
+	map = *tab;
+	str = map->x;
+	int i = 0;
+	int y;
+	while (map->next)
+	{
+		while (str[i])
+		{
+			printf("str = %s\n", str);
+			printf("len 1 = %d\n", ft_strlen(str));
+			y = 0;
+			if (ft_strncmp(str, "1", ft_strlen(str)) == 0)
+			{
+				printf("ya de 1 sur la premiere ligne\n");
+				y++;
+			}
+			i++;
+		}
+		map = map->next;
+	}
+	return (1);
+}
+
+////segfault en carte invalide a cause des missing P et E a fixer

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/01 13:17:25 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:59:41 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ struct	s_data
 {
 	int		file;
 	char	*str;
-	int		index_line;
+	int		len;
 	int		count_p;
 	int		count_e;
 };
@@ -60,9 +60,12 @@ char		*ft_save_line(char *str);
 
 //////////SO_LONG//////////
 int	ft_read_infile(char *infile);
-int	ft_parsing_map(t_map **map, t_data *x, char *c);
-int ft_return_count(int count);
+int	ft_parsing_map_p(t_map **map, t_data *x, char *c);
+int ft_return_count_p(t_data *x);
+int ft_return_count_e(t_data *x);
 int	ft_check(t_map **liste);
-int	ft_check_doublons(t_map **liste);
+int	ft_check_doublons_p(t_map **liste);
+int	ft_parsing_map_e(t_map **tab, t_data *x, char *c);
+int ft_is_rectangle(t_map **tab, t_data *x);
 
 #endif
