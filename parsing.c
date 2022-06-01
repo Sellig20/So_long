@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/31 17:26:52 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:42:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,61 +38,86 @@ int	ft_read_infile(char *infile)
 
 int	ft_check_doublons(t_map **liste)
 {
-	t_map	*save1;
-	t_map	*save2;
-	// t_map	*save3;
-	int i;
-
-	save2 = NULL;
-	i = 0;
-	save1 = *liste;
-	save2 = ft_add_back(save2, save1->x);
-
-		while (i < ft_strlen(save2->x))
+	int i = 0;
+	int j;
+	t_map *a;
+	a = *liste;
+	char *str = a->x;
+	while (a->next)
+	{
+		while (str[i])
 		{
-			printf("save2 = %c\n", save2->x[i]);
+			j = i + 1;
+			while (str[j])
+			{
+				//printf("str[i] = %s\n", str);
+				//printf("I = %c\n", str[i]);
+				if (str[i] == 'P' && str[j] == 'P')
+					return(0);
+				j++;
+			}
 			i++;
 		}
-
-
-	// save3 = NULL;
-	// save3 = ft_add_back(save3, save1->x);
-	// while (save3->x[i])
-	// {
-	// 	while (save2->x[i])
-	// 	{
-	// 		//if (save3->x[i] == save2->x[i])
-	// 			printf("doublon : %c\n", save2->x[i]);
-	// 		save2->x[i]++;
-	// 	}
-	// 	save3->x[i]++;
-	// }
+		a = a->next;
+	}
 	return (1);
 }
 
+
+
+
+
+
+
+
+
+
+
+// int	ft_check(t_map **liste)
+// {
+// 	t_map	*save1;
+// 	t_map	*save2;
+// 	int i;
+// 	//int j;
+// 	//char *c = "P";
+
+// 	save2 = NULL;
+// 	i = 0;
+// 	save1 = *liste;
+// 	save2 = ft_add_back(save2, save1->x);
+// 	while (i < ft_strlen(save2->x))
+// 	{
+// 		printf("save2 = %c\n", save2->x[i]);
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
 int	ft_parsing_map(t_map **tab, t_data *x, char *c)
 {
+	// t_map *tmp;
 	t_map *map;
-	int res;
+//	int res;
 	int j;
 	int size;
+	// int i = 0;
 	j = 0;
 	map = *tab;
 	size = ft_lstsize(&map);
-
-	printf("size = %d\n", size);
-	while (j < size && map)
-	{
-		res = ft_check_doublons(&map);
-		printf("j = %d\n", j);
-		map = map->next;
-		j++;
-	}
-	//printf("res = %d\n", res);
+	(void)c;
+	// while (j < size && map)
+	// {
+	// 	res = ft_check(&map);
+	// 	map = map->next;
+	// 	j++;
+	// }
+	// printf("res = %d\n", res);
 	while (map)
 	{
-		if ((ft_strncmp(c, "P", 1) == 0 && ft_strnstr(map->x, c, 1000)))
+		if (ft_check_doublons(&map) == 0)
 			x->count_p++;
+		if ((ft_strncmp(c, "P", 1) == 0 && ft_strnstr(map->x, c, 1000)))
+		 	x->count_p++;
 		map = map->next;
 	}
 	return (x->count_p);

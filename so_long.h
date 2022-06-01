@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/31 16:46:00 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:17:25 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char		*ft_save_line(char *str);
 int	ft_read_infile(char *infile);
 int	ft_parsing_map(t_map **map, t_data *x, char *c);
 int ft_return_count(int count);
+int	ft_check(t_map **liste);
 int	ft_check_doublons(t_map **liste);
 
 #endif
