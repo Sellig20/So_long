@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/01 18:19:00 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:26:46 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,33 @@ int main(int argc, char **argv)
 	x.count_e = ft_parsing_map_e(&tab, &x, "E");
 	ft_return_count_p(&x);
 	ft_return_count_e(&x);
-	while (tab->next)
+	//t_map *first;
+	// if (ft_is_wall_last(&tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+	// first = tab;
+	// if (ft_is_wall_first(&first) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+	// while (tab->next)
+	// {
+	// 	if (ft_is_rectangle(&tab, &x) == 0)
+	// 	{
+	// 		write(2, "Error : Invalid map\n", 20);
+	// 		return (1);
+	// 	}
+	// 	tab = tab->next;
+	// }
+	if (ft_is_wall_first_case(&tab) == 0)
 	{
-			ft_is_rectangle(&tab, &x);
-			tab = tab->next;
+		write(2, "Error : no wall around the rectangle\n", 37);
+		return (1);
 	}
+
+
 	return (0);
 }

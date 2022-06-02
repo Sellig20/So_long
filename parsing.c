@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/01 18:26:34 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:25:31 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,33 +126,119 @@ int ft_return_count_p(t_data *x)
 	return (1);
 }
 
-int ft_is_rectangle(t_map **tab, t_data *x)
+int ft_is_rectangle(t_map **tab, t_data *x) //si ma map est bien un rectangle
 {
 	t_map *map;
+	t_map *last;
 	char	*str;
+	int i;
 	(void)x;
+	int len;
 
 	map = *tab;
 	str = map->x;
-	int i = 0;
-	int y;
+	i = 0;
 	while (map->next)
 	{
-		while (str[i])
+		map = map->next;
+		last = map;
+	}
+	while (str[i])
+	{
+		len = ft_strlen(str);
+		if (len != ft_strlen(last->x))
+		 	return (0);
+		i++;
+	}
+	return (1);
+}
+
+// int	ft_is_space(char *str)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] == ' ')
+// 		{
+// 			if (str[i + 1] == ' ' || str[i + 1] == '\0')
+// 				return (0);
+// 		}
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
+int	ft_is_wall_first(t_map **first)
+{
+	t_map *ffirst;
+	int i = 0;
+	ffirst = *first;
+	while (ffirst->x[i])
+	{
+		char *str = ffirst->x;
+		if (str[i] == '1' || str[i] == '\n')
 		{
-			printf("str = %s\n", str);
-			printf("len 1 = %d\n", ft_strlen(str));
-			y = 0;
-			if (ft_strncmp(str, "1", ft_strlen(str)) == 0)
-			{
-				printf("ya de 1 sur la premiere ligne\n");
-				y++;
-			}
-			i++;
+				//printf("c bon que des 1\n");
+				//return 0;
 		}
+		else
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_is_wall_first_case(t_map **tab)
+{
+	t_map *map;
+
+	map = *tab;
+	int i = 0;
+	while (map)
+	{
+		if (map->x[i] == '1')
+		{
+			//
+		}
+		else
+			return (0);
 		map = map->next;
 	}
 	return (1);
 }
 
+int	ft_is_wall_last(t_map **tab)
+{
+	t_map *map;
+	t_map *last;
+	int i = 0;
+	map = *tab;
+	while (map->next)
+	{
+		map = map->next;
+		last = map;
+	}
+	char *strl = last->x;
+
+	i = 0;
+	while (last->x[i])
+	{
+		if (strl[i] == '1' || strl[i] == '\n')
+		{
+			//coucou
+		}
+		else
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 ////segfault en carte invalide a cause des missing P et E a fixer
+
+		// printf("len = %d\n", len);
+		// printf("last size = %d\n", ft_strlen(last->x));
+	// if ((ft_strncmp(last->x, "1", ft_strlen(last->x)) != 0))
+	// 			printf("ya pas qe des 1 ici en bas !\n");

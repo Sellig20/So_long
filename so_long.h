@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/01 17:59:41 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/02 18:21:00 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ int	ft_check(t_map **liste);
 int	ft_check_doublons_p(t_map **liste);
 int	ft_parsing_map_e(t_map **tab, t_data *x, char *c);
 int ft_is_rectangle(t_map **tab, t_data *x);
+int	ft_is_wall_first(t_map **first);
+int	ft_is_wall_last(t_map **tab);
+int	ft_is_wall_first_case(t_map **tab);
 
 #endif
