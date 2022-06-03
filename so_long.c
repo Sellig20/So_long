@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/02 18:26:46 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:28:43 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,17 @@ int main(int argc, char **argv)
 			x.str = get_next_line(x.file, 0);
 		}
 	}
-	x.count_p = ft_parsing_map_p(&tab, &x, "P");
-	x.count_e = ft_parsing_map_e(&tab, &x, "E");
-	ft_return_count_p(&x);
-	ft_return_count_e(&x);
+	//x.count_p = ft_parsing_map_p(&tab, &x, "P");
+	//x.count_e = ft_parsing_map_e(&tab, &x, "E");
+	while (tab)
+	{
+		x.count_c = ft_parsing_map_c(&tab, &x, "C");
+		printf("count 2= %d\n", x.count_c);
+		ft_return_count_c(&x);
+		tab = tab->next;
+	}
+	//ft_return_count_p(&x);
+	//ft_return_count_e(&x);
 	//t_map *first;
 	// if (ft_is_wall_last(&tab) == 0)
 	// {
@@ -62,11 +69,16 @@ int main(int argc, char **argv)
 	// 	}
 	// 	tab = tab->next;
 	// }
-	if (ft_is_wall_first_case(&tab) == 0)
-	{
-		write(2, "Error : no wall around the rectangle\n", 37);
-		return (1);
-	}
+	// if (ft_is_wall_first_case(&tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+	// if (ft_is_wall_last_case(&tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
 
 
 	return (0);

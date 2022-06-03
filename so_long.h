@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/02 18:21:00 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:44:28 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ struct	s_data
 	int		len;
 	int		count_p;
 	int		count_e;
+	int		count_c;
 };
 
 typedef struct s_map	t_map;
@@ -60,15 +61,18 @@ char		*ft_save_line(char *str);
 
 //////////SO_LONG//////////
 int	ft_read_infile(char *infile);
-int	ft_parsing_map_p(t_map **map, t_data *x, char *c);
 int ft_return_count_p(t_data *x);
 int ft_return_count_e(t_data *x);
+int ft_return_count_c(t_data *x);
 int	ft_check(t_map **liste);
 int	ft_check_doublons_p(t_map **liste);
 int	ft_parsing_map_e(t_map **tab, t_data *x, char *c);
+int	ft_parsing_map_p(t_map **map, t_data *x, char *c);
+int	ft_parsing_map_c(t_map **tab, t_data *x, char *c);
 int ft_is_rectangle(t_map **tab, t_data *x);
 int	ft_is_wall_first(t_map **first);
 int	ft_is_wall_last(t_map **tab);
 int	ft_is_wall_first_case(t_map **tab);
+int	ft_is_wall_last_case(t_map **tab);
 
 #endif
