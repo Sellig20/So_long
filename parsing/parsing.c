@@ -6,11 +6,69 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 12:38:48 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:07:09 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
+
+void	ft_execution_parsing(t_map **tab, t_data *x)
+{
+	t_map *map;
+
+	map = *tab;
+	x->count_p = ft_parsing_map_p(&map, x, "P");
+	ft_return_count_p(x);
+	x->count_e = ft_parsing_map_e(&map, x, "E");
+	ft_return_count_e(x);
+	while (map)
+	{
+		x->count_c = ft_parsing_map_c(&map, x, "C");
+		map = map->next;
+	}
+	ft_return_count_c(x);
+}
+
+void	ft_test(t_map **tab, t_data *x)
+{
+	t_map *map;
+
+	map = *tab;
+	while (map)
+	{
+		if (ft_is_rectangle(&map, x) == 0)
+		{
+			write(2, "Error : Invalid map\n", 20);
+			return ;
+		}
+		map = map->next;
+	}
+}
+	//
+	//t_map *first;
+	// if (ft_is_wall_last(tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+	// first = tab;
+	// if (ft_is_wall_first(first) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+
+	// if (ft_is_wall_first_case(tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+	// if (ft_is_wall_last_case(tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return (1);
+	// }
+
 
 int	ft_read_infile(char *infile)
 {

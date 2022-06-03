@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 11:44:28 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:06:17 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ int	ft_is_wall_first(t_map **first);
 int	ft_is_wall_last(t_map **tab);
 int	ft_is_wall_first_case(t_map **tab);
 int	ft_is_wall_last_case(t_map **tab);
+void	ft_execution_parsing(t_map **tab, t_data *x);
+void	ft_test(t_map **tab, t_data *x);
 
 #endif
