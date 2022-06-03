@@ -6,17 +6,19 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 15:07:09 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:09:43 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_execution_parsing(t_map **tab, t_data *x)
+void	ft_execution_parsing_items(t_map **tab, t_data *x)
 {
 	t_map *map;
 
 	map = *tab;
+	ft_execution_rectangle(&map);
+	ft_execution_wall(&map);
 	x->count_p = ft_parsing_map_p(&map, x, "P");
 	ft_return_count_p(x);
 	x->count_e = ft_parsing_map_e(&map, x, "E");
@@ -29,46 +31,34 @@ void	ft_execution_parsing(t_map **tab, t_data *x)
 	ft_return_count_c(x);
 }
 
-void	ft_test(t_map **tab, t_data *x)
+void	ft_execution_rectangle(t_map **tab)
 {
 	t_map *map;
 
 	map = *tab;
 	while (map)
 	{
-		if (ft_is_rectangle(&map, x) == 0)
+		if (ft_is_rectangle(&map) == 0)
 		{
-			write(2, "Error : Invalid map\n", 20);
+			write(2, "Error : Invalid format map\n", 27);
 			return ;
 		}
 		map = map->next;
 	}
 }
-	//
-	//t_map *first;
-	// if (ft_is_wall_last(tab) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return (1);
-	// }
-	// first = tab;
-	// if (ft_is_wall_first(first) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return (1);
-	// }
 
-	// if (ft_is_wall_first_case(tab) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return (1);
-	// }
-	// if (ft_is_wall_last_case(tab) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return (1);
-	// }
+void	ft_execution_wall(t_map **tab)
+{
+	t_map *map;
 
+	map = *tab;
+	if (ft_is_wall_last(&map) == 0 || ft_is_wall_first(&map) == 0
+	|| ft_is_wall_first_case(&map) == 0 || ft_is_wall_last_case(&map) == 0)
+	{
+		write(2, "Error : no wall around the rectangle\n", 37);
+		return ;
+	}
+}
 
 int	ft_read_infile(char *infile)
 {
@@ -94,13 +84,12 @@ int	ft_read_infile(char *infile)
 	return (1);
 }
 
-int ft_is_rectangle(t_map **tab, t_data *x)
+int ft_is_rectangle(t_map **tab)
 {
 	t_map *map;
 	t_map *last;
 	char	*str;
 	int i;
-	(void)x;
 	int len;
 
 	map = *tab;
@@ -121,9 +110,25 @@ int ft_is_rectangle(t_map **tab, t_data *x)
 	return (1);
 }
 
-////segfault en carte invalide a cause des missing P et E a fixer
+////segfault en carte invalide a cause des missing P et E a fixer OK
 
 		// printf("len = %d\n", len);
 		// printf("last size = %d\n", ft_strlen(last->x));
 	// if ((ft_strncmp(last->x, "1", ft_strlen(last->x)) != 0))
 	// 			printf("ya pas qe des 1 ici en bas !\n");
+
+	// if (ft_is_wall_first(&first) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return ;
+	// }
+	// if (ft_is_wall_first_case(tab) == 0 || ft_is_wall_last_case(tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return ;
+	// }
+	// if (ft_is_wall_last_case(tab) == 0)
+	// {
+	// 	write(2, "Error : no wall around the rectangle\n", 37);
+	// 	return ;
+	// }

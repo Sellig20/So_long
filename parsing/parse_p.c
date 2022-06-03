@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:31:30 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 14:19:34 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:43:43 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int ft_return_count_p(t_data *x)
 	}
 	else
 	{
-		write(2, "Error : two or more characters\n", 31);
+		write(2, "Error : two or more P characters\n", 33);
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 15:06:17 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:35:08 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ int	ft_check_doublons_p(t_map **liste);
 int	ft_parsing_map_e(t_map **tab, t_data *x, char *c);
 int	ft_parsing_map_p(t_map **map, t_data *x, char *c);
 int	ft_parsing_map_c(t_map **tab, t_data *x, char *c);
-int ft_is_rectangle(t_map **tab, t_data *x);
+int ft_is_rectangle(t_map **tab);
 int	ft_is_wall_first(t_map **first);
 int	ft_is_wall_last(t_map **tab);
 int	ft_is_wall_first_case(t_map **tab);
 int	ft_is_wall_last_case(t_map **tab);
-void	ft_execution_parsing(t_map **tab, t_data *x);
-void	ft_test(t_map **tab, t_data *x);
+void	ft_execution_parsing_items(t_map **tab, t_data *x);
+void	ft_execution_rectangle(t_map **tab);
+void	ft_execution_wall(t_map **tab);
 
 #endif
