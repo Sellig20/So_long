@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/06/03 12:36:47 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/06/03 19:08:51 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME					=	so_long
 
 SRC					=	so_long.c \
 							parsing/parsing.c \
+							parsing/open_map.c \
 							parsing/parse_p.c \
 							parsing/parse_e.c \
 							parsing/parse_c.c \

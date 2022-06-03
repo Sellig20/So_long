@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 17:35:08 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/03 20:03:35 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,19 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 
 //////////STRUCTURE//////////
+typedef struct s_map	t_map;
+
+struct s_map
+{
+	char	*x;
+	t_map	*next;
+};
+
+
 typedef struct s_data t_data;
 
 struct	s_data
@@ -35,14 +45,7 @@ struct	s_data
 	int		count_p;
 	int		count_e;
 	int		count_c;
-};
-
-typedef struct s_map	t_map;
-
-struct s_map
-{
-	char	*x;
-	t_map	*next;
+	t_map	*map;
 };
 
 //////////LINKED LISTS//////////
@@ -59,7 +62,8 @@ char		*ft_read_text(int fd, char *final);
 char		*ft_extract_line(char *s1);
 char		*ft_save_line(char *str);
 
-//////////SO_LONG//////////
+//////////PARSING//////////
+int	ft_open_map(int argc, char **argv, t_data *x);
 int	ft_read_infile(char *infile);
 int ft_return_count_p(t_data *x);
 int ft_return_count_e(t_data *x);
@@ -77,5 +81,11 @@ int	ft_is_wall_last_case(t_map **tab);
 void	ft_execution_parsing_items(t_map **tab, t_data *x);
 void	ft_execution_rectangle(t_map **tab);
 void	ft_execution_wall(t_map **tab);
+
+//////////SO_LONG//////////
+void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
+
+
+
 
 #endif

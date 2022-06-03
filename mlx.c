@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 19:59:59 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/06/03 19:03:23 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title)
 {
-	t_data	x;
-
-	ft_open_map(argc, argv, &x);
-	return (0);
+	
 }
+
