@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:32:53 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 12:34:47 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:28:47 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 int	ft_parsing_map_e(t_map **tab, t_data *x, char *c)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = *tab;
 	while (map)
 	{
 		if ((ft_strncmp(c, "E", 1) == 0 && ft_strnstr(map->x, c, 1000)))
-		 	x->count_e++;
+		{
+			x->count_e++;
+		}
 		map = map->next;
 	}
 	return (x->count_e);
 }
 
-int ft_return_count_e(t_data *x)
+int	ft_return_count_e(t_data *x)
 {
 	if (x->count_e < 1)
 	{

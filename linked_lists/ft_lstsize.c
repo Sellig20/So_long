@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:43:28 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/31 16:45:29 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:33:19 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_lstsize(t_map **lst)
 {
 	int			count;
-	t_map	*buffer;
+	t_map		*buffer;
 
 	count = 0;
 	buffer = *lst;

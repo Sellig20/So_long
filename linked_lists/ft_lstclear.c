@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 16:26:21 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:31:59 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/06/04 15:54:16 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/06/04 16:46:35 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../so_long.h"
 
-int	ft_strlen(char *str)
+void	ft_lstclear(t_map **tab)
 {
-	int	i;
+	t_map	*map;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	map = *tab;
+	while (*tab)
+	{
+		map = (*tab)->next;
+		free((*tab)->x);
+		free(*tab);
+		*tab = map;
+	}
 }

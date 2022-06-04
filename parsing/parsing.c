@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/03 18:09:43 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:25:02 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_execution_parsing_items(t_map **tab, t_data *x)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = *tab;
 	ft_execution_rectangle(&map);
@@ -33,27 +33,23 @@ void	ft_execution_parsing_items(t_map **tab, t_data *x)
 
 void	ft_execution_rectangle(t_map **tab)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = *tab;
-	while (map)
+	if (ft_is_rectangle(&map) == 0)
 	{
-		if (ft_is_rectangle(&map) == 0)
-		{
-			write(2, "Error : Invalid format map\n", 27);
-			return ;
-		}
-		map = map->next;
+		write(2, "Error : Invalid format map\n", 27);
+		return ;
 	}
 }
 
 void	ft_execution_wall(t_map **tab)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = *tab;
 	if (ft_is_wall_last(&map) == 0 || ft_is_wall_first(&map) == 0
-	|| ft_is_wall_first_case(&map) == 0 || ft_is_wall_last_case(&map) == 0)
+		|| ft_is_wall_first_case(&map) == 0 || ft_is_wall_last_case(&map) == 0)
 	{
 		write(2, "Error : no wall around the rectangle\n", 37);
 		return ;
@@ -62,35 +58,29 @@ void	ft_execution_wall(t_map **tab)
 
 int	ft_read_infile(char *infile)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (infile[i])
+	if (!(ft_strnstr(&infile[ft_strlen(infile) - 4], ".ber", 4)))
 	{
-		if (!(ft_strnstr(infile, ".ber", 1000)))
-		{
-			write(2, "Error : Invalid extension for the map\n", 38);
-			return (0);
-		}
-		if (ft_strncmp(infile, ".ber", 4) == 0)
-		{
-			write(2, "Error : Invalid infile\n", 23);
-			return (0);
-		}
-		else
-			return (1);
-		i++;
+		write(2, "Error : Invalid extension for the map\n", 38);
+		return (0);
+	}
+	if (ft_strncmp(infile, ".ber", 4) == 0)
+	{
+		write(2, "Error : Invalid infile\n", 23);
+		return (0);
 	}
 	return (1);
 }
 
-int ft_is_rectangle(t_map **tab)
+int	ft_is_rectangle(t_map **tab)
 {
-	t_map *map;
-	t_map *last;
+	t_map	*map;
+	t_map	*last;
 	char	*str;
-	int i;
-	int len;
+	int		i;
+	int		len;
 
 	map = *tab;
 	str = map->x;
@@ -104,7 +94,7 @@ int ft_is_rectangle(t_map **tab)
 	{
 		len = ft_strlen(str);
 		if (len != ft_strlen(last->x))
-		 	return (0);
+			return (0);
 		i++;
 	}
 	return (1);

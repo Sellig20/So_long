@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/06/03 19:08:51 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/06/04 16:36:23 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ SRC					=	so_long.c \
 							get_next_line/get_next_line_utils.c \
 							linked_lists/ft_add_back.c \
 							linked_lists/ft_lstsize.c \
+							linked_lists/ft_lstclear.c \
+							tools.c \
+							mlx.c \
 
 LIBFT = ./libft/libft.a
 
@@ -33,7 +36,7 @@ MLX = ./mlx/libmlx.a
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 OBJ = $(SRC:.c=.o)
 

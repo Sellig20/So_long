@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 16:26:21 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:31:59 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/06/04 15:51:54 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/06/04 15:57:45 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-int	ft_strlen(char *str)
+void	ft_free_args(char	**args)
 {
-	int	i;
+	char	**tmp;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	tmp = args;
+	while (*tmp)
+	{
+		free(*tmp);
+		tmp++;
+	}
+	free(args);
 }
