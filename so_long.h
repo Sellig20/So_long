@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:20:57 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:15:12 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define WINDOW_HEIGHT 300
 # define MLX_ERROR 1
 # define RED_PIXEL 0xFF0000
+# define GREEN_PIXEL 0xFF00
+# define WHITE_PIXEL 0xFFFFFF
 
 //////////STRUCTURE//////////
 typedef struct s_map	t_map;
@@ -39,6 +41,17 @@ struct s_map
 {
 	char	*x;
 	t_map	*next;
+};
+
+typedef struct s_img	t_img;
+
+struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 };
 
 typedef struct s_data	t_data;
@@ -54,7 +67,20 @@ struct	s_data
 	t_map	*map;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	img;
 };
+
+typedef struct s_rect	t_rect;
+
+struct s_rect
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	color;
+};
+
 
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
@@ -99,5 +125,10 @@ int		handle_no_event(void *data);
 int		handle_input(int keysym, t_data *x);
 int		handle_keypress(int keysym, t_data *x);
 int		handle_keyrelease(int keysym, void *data);
+int		render(t_data *data);
+int		render_rect(t_img *img, t_rect rect);
+void	render_background(t_img *img, int color);
+void	img_pix_put(t_img *img, int x, int y, int color);
+
 
 #endif

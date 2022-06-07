@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:36:57 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:30:12 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/07 10:58:55 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	ft_is_wall_last(t_map **tab)
 
 	map = *tab;
 	i = 0;
-	strl = last->x;
 	while (map->next)
 	{
 		map = map->next;
 		last = map;
 	}
+	strl = last->x;
 	i = 0;
 	while (last->x[i])
 	{
