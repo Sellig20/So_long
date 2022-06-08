@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 18:07:37 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 18:53:55 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/06/08 19:18:07 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/06/08 19:20:50 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "libft.h"
 
-t_map	*ft_add_back(t_map *a_list, char *value)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_map	*a;
-	t_map	*tmp;
+	int	i;
 
-	a = malloc(sizeof(t_map));
-	if (a == NULL)
-		return (NULL);
-	a->x = value;
-	a->next = NULL;
-	tmp = a_list;
-	if (!tmp)
-		a_list = a;
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = a;
-	}
-	return (a_list);
+	if (!s)
+		return ;
+	i = 0;
+	write(fd, s, ft_strlen(s));
 }

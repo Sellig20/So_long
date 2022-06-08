@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 18:07:37 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 18:53:55 by jecolmou         ###   ########.fr       */
+/*   Created: 2022/06/08 18:31:25 by jecolmou          #+#    #+#             */
+/*   Updated: 2022/06/08 18:36:49 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include <stddef.h>
 
-t_map	*ft_add_back(t_map *a_list, char *value)
+void	ft_bzero(void *s, size_t n)
 {
-	t_map	*a;
-	t_map	*tmp;
+	int		i;
+	char	*str;
 
-	a = malloc(sizeof(t_map));
-	if (a == NULL)
-		return (NULL);
-	a->x = value;
-	a->next = NULL;
-	tmp = a_list;
-	if (!tmp)
-		a_list = a;
-	else
+	i = 0;
+	str = s;
+	while (n > 0)
 	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = a;
+		str[i] = 0;
+		i++;
+		n--;
 	}
-	return (a_list);
 }

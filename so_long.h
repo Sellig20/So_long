@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 14:32:48 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:37:49 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,7 @@ typedef struct s_map	t_map;
 struct s_map
 {
 	char	*x;
-	void	*bg;
-	void	*wall;
-	void	*character;
-	void	*collectible;
-	void	*exit;
-	int		height;
-	int		width;
 	t_map	*next;
-};
-
-typedef struct s_img	t_img;
-
-struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
 };
 
 typedef struct s_data	t_data;
@@ -72,22 +54,14 @@ struct	s_data
 	int		count_e;
 	int		count_c;
 	t_map	*map;
+	void	*wall;
+	void	*ground;
+	void	*exit;
+	void	*charac;
+	void	*collectible;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	img;
 };
-
-typedef struct s_rect	t_rect;
-
-struct s_rect
-{
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	color;
-};
-
 
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
@@ -106,7 +80,6 @@ char	*ft_save_line(char *str);
 
 //////////PARSING//////////
 int		ft_check_args(int argc, char **argv);
-void	ft_initialise(t_data *x);
 int		ft_open_map(char **argv, t_data *x);
 int		ft_read_infile(char *infile);
 int		ft_return_count_p(t_data *x);
@@ -138,7 +111,7 @@ void	render_background(t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
 
 void	display_map(t_data *data, int i, int j);
-void	images(t_data *data, t_map *map);
+int	ft_get_images(t_data *data, t_map *map);
 t_data	create(t_data *data);
 
 

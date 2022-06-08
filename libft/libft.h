@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:59:44 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/27 17:37:13 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:22:25 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		ft_int_len(long nb);
 char	*ft_itoa(int nb);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strcpy(char *dest, char *src);
+void	ft_bzero(void *s, size_t n);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif
 
