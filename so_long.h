@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:12 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:32:48 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct s_map	t_map;
 struct s_map
 {
 	char	*x;
+	void	*bg;
+	void	*wall;
+	void	*character;
+	void	*collectible;
+	void	*exit;
+	int		height;
+	int		width;
 	t_map	*next;
 };
 
@@ -129,6 +136,10 @@ int		render(t_data *data);
 int		render_rect(t_img *img, t_rect rect);
 void	render_background(t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
+
+void	display_map(t_data *data, int i, int j);
+void	images(t_data *data, t_map *map);
+t_data	create(t_data *data);
 
 
 #endif
