@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 18:37:49 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:15:58 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ struct	s_data
 	void	*win_ptr;
 };
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
+
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
 int		ft_lstsize(t_map **lst);
@@ -111,7 +120,7 @@ void	render_background(t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
 
 void	display_map(t_data *data, int i, int j);
-int	ft_get_images(t_data *data, t_map *map);
+int	ft_get_images(t_data *data);
 t_data	create(t_data *data);
 
 

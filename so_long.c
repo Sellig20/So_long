@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 19:23:08 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:17:00 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ t_data	create(t_data *data)
 {
 	int	i;
 	int	j;
-	t_data x;
 
-	images(&x, map);
-	return (x);
+	ft_get_images(&data);
+	return (data);
 }
 
 int	ft_un_alloc(t_data *data)
@@ -48,19 +47,41 @@ int	ft_get_images(t_data *data)
 	int height;
 	int width;
 
-	data->ground = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Cucumbers_02.xpm", &width, &height);
-	if (data->ground == NULL)
+	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Cucumbers_02.xpm", &width, &height);
+	if (data->wall == NULL)
 	{
 		ft_putstr_fd("Error : image\n", 2);
+		ft_un_alloc(&data);
 		return (0);
 	}
 	data->charac = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Chick_Down.xpm", &width, &height);
 	if (data->charac == NULL)
 	{
 		ft_putstr_fd("Error : image\n", 2);
+		ft_un_alloc(&data);
 		return (0);
 	}
-	data->
+	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Radish.xpm", &width, &height);
+	if (data->collectible == NULL)
+	{
+		ft_putstr_fd("Error : image\n", 2);
+		ft_un_alloc(&data);
+		return (0);
+	}
+	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Hole.xpm", &width, &height);
+	if (data->exit == NULL)
+	{
+		ft_putstr_fd("Error : image\n", 2);
+		ft_un_alloc(&data);
+		return (0);
+	}
+	data->ground = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Carrots_01.xpm", &width, &height);
+	if (data->ground == NULL)
+	{
+		ft_putstr_fd("error : image\n", 2);
+		ft_un_alloc(&data);
+		return (0);
+	}
 	return (1);
 }
 
