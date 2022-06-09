@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 15:15:58 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 19:47:58 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ struct s_map
 	t_map	*next;
 };
 
+typedef struct s_rect
+{
+	int	x;
+	int	y;
+	int width;
+	int height;
+	int color;
+}	t_rect;
+
 typedef struct s_data	t_data;
 
 struct	s_data
@@ -50,6 +59,8 @@ struct	s_data
 	int		file;
 	char	*str;
 	int		len;
+	int		len_x;
+	int		len_y;
 	int		count_p;
 	int		count_e;
 	int		count_c;
@@ -120,8 +131,9 @@ void	render_background(t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
 
 void	display_map(t_data *data, int i, int j);
-int	ft_get_images(t_data *data);
-t_data	create(t_data *data);
-
+int		ft_get_images(t_data *data);
+t_data	*create(t_data *data);
+int		ft_len_x(t_data *data);
+int		ft_len_y(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:18:07 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 19:20:50 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:57:44 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
 	if (!s)
 		return ;
-	i = 0;
 	write(fd, s, ft_strlen(s));
 }

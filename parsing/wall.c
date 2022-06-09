@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:36:57 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/07 10:58:55 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 18:50:31 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	ft_is_wall_first(t_map **first)
 		str = ffirst->x;
 		if (str[i] == '1' || str[i] == '\n')
 		{
-				//printf("c bon que des 1\n");
-				//return 0;
+				//
 		}
 		else
 			return (0);
@@ -87,7 +86,7 @@ int	ft_is_wall_first_case(t_map **tab)
 int	ft_is_wall_last_case(t_map **tab)
 {
 	t_map	*map;
-	int		len;
+	int len;
 
 	map = *tab;
 	len = ft_strlen(map->x);

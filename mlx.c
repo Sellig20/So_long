@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 11:25:39 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 19:20:59 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,42 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
+#define X 0
+#define Y 1
+
 int	render(t_data *data)
 {
+	int	i;
+	char	*str;
+	int	pos[2];
+
+	pos[Y] = 0;
+	i = 0;
 	if (data->win_ptr == NULL)
 		return (1);
-	render_background(&data->img, WHITE_PIXEL);
-	render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
-	render_rect(&data->img, (t_rect){0, 0, 500, 300, RED_PIXEL});
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
+	while (data->map)
+	{
+		pos[X] = 0;
+		// printf("x = %c\n", data->map->x[i]);
+		str = data->map->x;
+		while (*str)
+		{
+			if (*str == '1')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->wall, pos[X], pos[Y]);
+			if (*str == '0')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, pos[X], pos[Y]);
+			if (*str == 'E')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->exit, pos[X], pos[Y] + (128 / 2));
+			if (*str == 'P')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, pos[X], pos[Y]);
+			if (*str == 'C')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->collectible, pos[X], pos[Y]);
+			pos[X] += 128;
+			str++;
+		}
+		pos[Y] += 128;
+		data->map = data->map->next;
+	}
 	return (0);
 }
 

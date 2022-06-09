@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:25:02 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/09 19:48:11 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	ft_execution_parsing_items(t_map **tab, t_data *x)
 	{
 		x->count_c = ft_parsing_map_c(&map, x, "C");
 		map = map->next;
+	}
+	ft_len_x(x);
+	ft_len_y(x);
+	if (x->len_x > 20)
+	{
+		ft_putstr_fd("Error : wrong width\n", 2);
+		return ;
+	}
+	if (x->len_y > 11)
+	{
+		ft_putstr_fd("Error : wrong height\n", 2);
+		return ;
 	}
 	ft_return_count_c(x);
 }
