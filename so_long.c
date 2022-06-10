@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 19:58:51 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/10 18:08:11 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,35 +82,62 @@ int	ft_get_images(t_data *data)
 	return (1);
 }
 
-// void	display_map(t_data *data, int i, int j)
-// {
-// 	if (data->map->x[i] == '0')
-// 	{
-// 		printf("un zero trouve !! \n");
-// 		//mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, j * 60, i * 60);
-// 	}
-// }
-
-int ft_len_x(t_data *data)
+void ft_len_x(t_map **tab, t_data *data)
 {
 	int i;
 	char	*str;
+	t_map *map;
 
 	i = 0;
-	str = data->map->x;
+	map = *tab;
+	str = map->x;
 	while (str[i])
 	{
 		data->len_x = ft_strlen(str);
 		i++;
 	}
-	printf("str[i] = %d\n", data->len);
-	return (data->len_x);
+	data->len_x--;
 }
 
-int ft_len_y(t_data *data)
+void ft_len_y(t_map **tab, t_data *data)
 {
-	data->len_y = ft_lstsize(&data->map);
-	return (data->len_y);
+	t_map *map;
+
+	map = *tab;
+	data->len_y = ft_lstsize(&map);
+}
+
+int	refresh(t_data *data)
+{
+	usleep(20000);
+	render(data);
+	return (1);
+}
+
+
+int	deal_key(int key, t_data *data)
+{
+	// if (is_exit(*world)
+	// 	&& world->map[world->player->coord.y][world->player->coord.x] == 'P')
+	// {
+		if (key == 119)
+		{
+			printf("x = %d\n", data->player->coord.x);
+			printf("y = %d\n", data->player->coord.y);
+			data->dtab[data->player->coord.x][data->player->coord.y] = '0';
+			data->player->coord.y -= 1;
+			data->dtab[data->player->coord.x][data->player->coord.y] = 'P';
+		}
+		// else if (key == 115)
+		// 	move(world, 1);
+		// else if (key == 97)
+		// 	move(world, 2);
+		// else if (key == 100)
+		// 	move(world, 3);
+	//}
+	// if (key == 65307)
+	// 	free_world(world);
+	return (1);
 }
 
 int main(int argc, char **argv)
@@ -118,11 +145,6 @@ int main(int argc, char **argv)
 	t_data	x;
 
 	ft_bzero(&x, sizeof(t_data));
-	if (argc != 2)
-	{
-		write(2, "Error : invalid number of arguments\n", 36);
-		return (1);
-	}
 	if (ft_check_args(argc, argv))
 		return (1);
 	if (ft_open_map(argv, &x) == 0)
@@ -139,11 +161,13 @@ int main(int argc, char **argv)
 		free(x.win_ptr);
 		return (MLX_ERROR);
 	}
-	mlx_loop_hook(x.mlx_ptr, &render, &x);
-	printf("coucou\n");
-	mlx_hook(x.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &x);
+
+	// mlx_loop_hook(x.mlx_ptr, &render, &x);
+	mlx_hook(x.win_ptr, 2, 1L << 0, deal_key, &x);
+	mlx_loop_hook(x.mlx_ptr, refresh, &x);
+	// mlx_hook(x.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &x);
 	mlx_loop(x.mlx_ptr);
-	mlx_destroy_display(x.mlx_ptr);
-	free(x.mlx_ptr);
+	// mlx_destroy_display(x.mlx_ptr);
+	// free(x.mlx_ptr);
 	return (0);
 }

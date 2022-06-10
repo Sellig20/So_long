@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 19:20:59 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/10 18:25:45 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,69 @@ int	handle_keypress(int keysym, t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 	}
+	// if (keysym == XK_Up)
+	// {
+	// 	ft_move_c_up();
+	// }
 	return (0);
 }
 
 #define X 0
 #define Y 1
+
+t_player	*ft_create_player(int i, int j)
+{
+	t_player	*play;
+	t_coor		coord;
+
+	play = malloc(sizeof(t_player));
+	coord.x = j;
+	coord.y = i;
+	play->coord = coord;
+	play->dir = -1;
+	return (play);
+}
+
+int	ft_convert_in_char(t_map **tab, t_data *data)
+{
+	t_map *map;
+	int i = 0;
+	map = *tab;
+	data->dtab = malloc(sizeof(ft_lstsize(&map) + 1));
+	if (data->dtab == NULL)
+		return (0);
+	while (map)
+	{
+		data->dtab[i] = map->x;
+		map = map->next;
+		i++;
+	}
+	ft_index(data);
+	return (1);
+}
+
+void	ft_index(t_data *x)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (x->dtab[i])
+	{
+		j = 0;
+		while (x->dtab[i][j])
+		{
+		printf("adil le caca = %d\n", i);
+
+			printf("adilj = %d\n", j);
+			if (x->dtab[i][j] == 'P')
+				x->player = ft_create_player(i, j);
+			j++;
+		}
+		i = i + 1;
+
+	}
+}
 
 int	render(t_data *data)
 {
@@ -90,50 +148,3 @@ int	render(t_data *data)
 	return (0);
 }
 
-int	render_rect(t_img *img, t_rect rect)
-{
-	int	i;
-	int	j;
-
-	i = rect.y;
-	while (i < rect.y + rect.height)
-	{
-		j = rect.x;
-		while (j < rect.x + rect.width)
-			img_pix_put(img, j++, i, rect.color);
-		++i;
-	}
-	return (0);
-}
-
-void	render_background(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-			img_pix_put(img, j++, i, color);
-		++i;
-	}
-}
-
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char    *pixel;
-	int		i;
-
-	i = img->bpp - 8;
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	while (i >= 0)
-	{
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
-	}
-}

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 19:47:58 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:51:59 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 # define WINDOW_WIDTH 600
 # define WINDOW_HEIGHT 300
 # define MLX_ERROR 1
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0xFF00
-# define WHITE_PIXEL 0xFFFFFF
 
 //////////STRUCTURE//////////
 typedef struct s_map	t_map;
@@ -52,7 +49,23 @@ typedef struct s_rect
 	int color;
 }	t_rect;
 
+typedef struct s_coor	t_coor;
+
+struct	s_coor
+{
+	int	x;
+	int	y;
+};
+
 typedef struct s_data	t_data;
+
+typedef struct s_player t_player;
+
+struct	s_player
+{
+	int		dir;
+	t_coor	coord;
+};
 
 struct	s_data
 {
@@ -72,6 +85,9 @@ struct	s_data
 	void	*collectible;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	**dtab;
+	t_player	*player;
+	int		move_count;
 };
 
 typedef struct s_img
@@ -82,6 +98,10 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }	t_img;
+
+
+
+
 
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
@@ -133,7 +153,10 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 void	display_map(t_data *data, int i, int j);
 int		ft_get_images(t_data *data);
 t_data	*create(t_data *data);
-int		ft_len_x(t_data *data);
-int		ft_len_y(t_data *data);
-
+void	ft_len_x(t_map **map, t_data *data);
+void	ft_len_y(t_map **map, t_data *data);
+void	ft_len_xy(t_map **tab, t_data *x);
+int		ft_convert_in_char(t_map **tab, t_data *data);
+void	ft_index(t_data *x);
+void	player_move(t_data *world, int dir, int y, int x);
 #endif

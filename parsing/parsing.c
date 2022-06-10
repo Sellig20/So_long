@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 19:48:11 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:50:41 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_execution_parsing_items(t_map **tab, t_data *x)
 	map = *tab;
 	ft_execution_rectangle(&map);
 	ft_execution_wall(&map);
+	ft_len_xy(&map, x);
 	x->count_p = ft_parsing_map_p(&map, x, "P");
 	ft_return_count_p(x);
 	x->count_e = ft_parsing_map_e(&map, x, "E");
@@ -28,8 +29,16 @@ void	ft_execution_parsing_items(t_map **tab, t_data *x)
 		x->count_c = ft_parsing_map_c(&map, x, "C");
 		map = map->next;
 	}
-	ft_len_x(x);
-	ft_len_y(x);
+	ft_return_count_c(x);
+}
+
+void	ft_len_xy(t_map **tab, t_data *x)
+{
+	t_map *map;
+
+	map = *tab;
+	ft_len_x(&map, x);
+	ft_len_y(&map, x);
 	if (x->len_x > 20)
 	{
 		ft_putstr_fd("Error : wrong width\n", 2);
@@ -40,7 +49,6 @@ void	ft_execution_parsing_items(t_map **tab, t_data *x)
 		ft_putstr_fd("Error : wrong height\n", 2);
 		return ;
 	}
-	ft_return_count_c(x);
 }
 
 void	ft_execution_rectangle(t_map **tab)
@@ -111,26 +119,3 @@ int	ft_is_rectangle(t_map **tab)
 	}
 	return (1);
 }
-
-////segfault en carte invalide a cause des missing P et E a fixer OK
-
-		// printf("len = %d\n", len);
-		// printf("last size = %d\n", ft_strlen(last->x));
-	// if ((ft_strncmp(last->x, "1", ft_strlen(last->x)) != 0))
-	// 			printf("ya pas qe des 1 ici en bas !\n");
-
-	// if (ft_is_wall_first(&first) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return ;
-	// }
-	// if (ft_is_wall_first_case(tab) == 0 || ft_is_wall_last_case(tab) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return ;
-	// }
-	// if (ft_is_wall_last_case(tab) == 0)
-	// {
-	// 	write(2, "Error : no wall around the rectangle\n", 37);
-	// 	return ;
-	// }

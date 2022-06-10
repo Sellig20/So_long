@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:31:30 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 17:29:37 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:50:17 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 int	ft_parsing_map_p(t_map **tab, t_data *x, char *c)
 {
 	t_map	*map;
+	int compt;
 
 	map = *tab;
 	while (map)
 	{
+		compt = 0;
 		if (ft_check_doublons_p(&map) == 0)
 		{
 			x->count_p++;
 		}
+		compt++;
 		if ((ft_strncmp(c, "P", 1) == 0 && ft_strnstr(map->x, c, 1000)))
 		{
 			x->count_p++;
