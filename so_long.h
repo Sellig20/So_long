@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/10 17:51:59 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:44:49 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_map	t_map;
 struct s_map
 {
 	char	*x;
+	int		one;
 	t_map	*next;
 };
 
@@ -87,6 +88,7 @@ struct	s_data
 	void	*win_ptr;
 	char	**dtab;
 	t_player	*player;
+	int		**stop_wall;
 	int		move_count;
 };
 

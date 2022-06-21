@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:36:57 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/09 18:50:31 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:44:14 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_is_wall_first_case(t_map **tab)
 	{
 		if (map->x[i] == '1')
 		{
-			//
+			one++;
 		}
 		else
 			return (0);

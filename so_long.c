@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/10 18:08:11 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:03:57 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_get_images(t_data *data)
 	data->ground = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Carrots_01.xpm", &width, &height);
 	if (data->ground == NULL)
 	{
-		ft_putstr_fd("error : image\n", 2);
+		ft_putstr_fd("Error : image\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
@@ -114,29 +114,35 @@ int	refresh(t_data *data)
 	return (1);
 }
 
-
 int	deal_key(int key, t_data *data)
 {
-	// if (is_exit(*world)
-	// 	&& world->map[world->player->coord.y][world->player->coord.x] == 'P')
-	// {
-		if (key == 119)
+		if (key == 119) //W
 		{
-			printf("x = %d\n", data->player->coord.x);
-			printf("y = %d\n", data->player->coord.y);
-			data->dtab[data->player->coord.x][data->player->coord.y] = '0';
+			// printf("x = %d\n", data->player->coord.x);
+			// printf("y = %d\n", data->player->coord.y);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
 			data->player->coord.y -= 1;
-			data->dtab[data->player->coord.x][data->player->coord.y] = 'P';
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
 		}
-		// else if (key == 115)
-		// 	move(world, 1);
-		// else if (key == 97)
-		// 	move(world, 2);
-		// else if (key == 100)
-		// 	move(world, 3);
-	//}
-	// if (key == 65307)
-	// 	free_world(world);
+		else if (key == 115) //S
+		{
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
+			data->player->coord.y += 1;
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
+		}
+		else if (key == 97) //A
+		{
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
+			data->player->coord.x -= 1;
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
+		}
+		else if (key == 100) //D
+		{
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
+			data->player->coord.x += 1;
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
+		}
+	refresh(data);
 	return (1);
 }
 
@@ -145,6 +151,7 @@ int main(int argc, char **argv)
 	t_data	x;
 
 	ft_bzero(&x, sizeof(t_data));
+
 	if (ft_check_args(argc, argv))
 		return (1);
 	if (ft_open_map(argv, &x) == 0)
@@ -161,7 +168,6 @@ int main(int argc, char **argv)
 		free(x.win_ptr);
 		return (MLX_ERROR);
 	}
-
 	// mlx_loop_hook(x.mlx_ptr, &render, &x);
 	mlx_hook(x.win_ptr, 2, 1L << 0, deal_key, &x);
 	mlx_loop_hook(x.mlx_ptr, refresh, &x);
