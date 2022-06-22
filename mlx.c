@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/21 17:47:16 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:51:23 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,10 @@ int	render(t_data *data)
 	int	i;
 	char	*str;
 	int	pos[2];
-	int	k;
+	// int	k;
 
-
-	k = 0;
+	// printf("coolectibe = %d\n", data->count_c);
+	// k = 0;
 	pos[Y] = 0;
 	i = 0;
 	if (data->win_ptr == NULL)
@@ -134,11 +134,11 @@ int	render(t_data *data)
 		{
 			if (*str == '1')
 			{
-				data->stop_wall[k][0] = pos[X];
-				data->stop_wall[k][1] = pos[Y];
+				// data->stop_wall[k][0] = pos[X];
+				// data->stop_wall[k][1] = pos[Y];
 				//compte les1. remplis le tableau stop_wall avec ls positions de tous le 1. malloc le stop_wall avec lenombre de 1 dans ta map.
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->wall, pos[X], pos[Y]);
-				k++;
+				// k++;
 			}
 			if (*str == '0')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, pos[X], pos[Y]);
