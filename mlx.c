@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 17:51:23 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/22 19:31:45 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,19 @@ t_player	*ft_create_player(int i, int j)
 	play->dir = -1;
 	return (play);
 }
-
 int	ft_convert_in_char(t_map **tab, t_data *data)
 {
 	t_map *map;
 	int i = 0;
 	map = *tab;
-	data->dtab = malloc(sizeof(ft_lstsize(&map) + 1));
+	data->dtab = malloc(sizeof(char *) * data->len_y);
 	if (data->dtab == NULL)
 		return (0);
 	while (map)
 	{
+		data->dtab[i] = malloc(sizeof(char) * data->len_x);
 		data->dtab[i] = map->x;
+		printf("xxxx = %s\n", map->x);
 		map = map->next;
 		i++;
 	}
@@ -89,17 +90,36 @@ int	ft_convert_in_char(t_map **tab, t_data *data)
 	return (1);
 }
 
+// int	ft_convert_in_char(t_map **tab, t_data *data)
+// {
+	// t_map *map;
+	// int i = 0;
+	// map = *tab;
+	// data->dtab = malloc(sizeof(ft_lstsize(&map)));
+	// if (data->dtab == NULL)
+		// return (0);
+	// while (map)
+	// {
+		// data->dtab[i] = map->x;
+		// printf("dtab = %s\n", data->dtab[i]);
+		// map = map->next;
+		// i++;
+	// }
+	// ft_index(data);
+	// return (1);
+// }
+
 void	ft_index(t_data *x)
 {
 	int	i;
 	int	j;
 	char	**str;
-
 	i = 0;
 	str = NULL;
 	while (x->dtab[i])
 	{
 		j = 0;
+		printf("%c", x->dtab[i][j]);
 		while (x->dtab[i][j])
 		{
 			if (x->dtab[i][j] == 'P')
@@ -112,6 +132,14 @@ void	ft_index(t_data *x)
 		i++;
 	}
 }
+
+//la croix pour fermer
+//esc pour fermer
+//le nombre de collectible a decrementer pour la sortie
+//le compteru de collectible
+//le trou pour s'en aller
+//parsing : rectangle + grand
+//parsing : big map et small map posibles ?
 
 int	render(t_data *data)
 {

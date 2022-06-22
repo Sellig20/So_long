@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 18:03:02 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/22 19:32:18 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	is_accessible(t_data *data, char c, int x, int y)
 {
 	(void)y;
 	(void)x;
-	if (c != '0' && c != 'C' && !(c == 'E' && data->item_count == 0))
+	if (c != '0' && c != 'C' && c != 'P' && !(c == 'E' && data->item_count == 0))
 		return (0);
 	// else if (c == 'E')
 	// {
@@ -156,6 +156,8 @@ int	deal_key(int key, t_data *data)
 			data->player->coord.x += 1;
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
 		}
+		else if (key == 65307)
+			exit(0);
 	return (1);
 }
 
