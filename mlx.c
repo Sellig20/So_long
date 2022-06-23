@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 19:31:45 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:01:59 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	ft_convert_in_char(t_map **tab, t_data *data)
 	{
 		data->dtab[i] = malloc(sizeof(char) * data->len_x);
 		data->dtab[i] = map->x;
-		printf("xxxx = %s\n", map->x);
 		map = map->next;
 		i++;
 	}
@@ -119,7 +118,7 @@ void	ft_index(t_data *x)
 	while (x->dtab[i])
 	{
 		j = 0;
-		printf("%c", x->dtab[i][j]);
+		//printf("%c", x->dtab[i][j]);
 		while (x->dtab[i][j])
 		{
 			if (x->dtab[i][j] == 'P')
@@ -134,10 +133,6 @@ void	ft_index(t_data *x)
 }
 
 //la croix pour fermer
-//esc pour fermer
-//le nombre de collectible a decrementer pour la sortie
-//le compteru de collectible
-//le trou pour s'en aller
 //parsing : rectangle + grand
 //parsing : big map et small map posibles ?
 
@@ -146,10 +141,7 @@ int	render(t_data *data)
 	int	i;
 	char	*str;
 	int	pos[2];
-	// int	k;
 
-	// printf("coolectibe = %d\n", data->count_c);
-	// k = 0;
 	pos[Y] = 0;
 	i = 0;
 	if (data->win_ptr == NULL)
@@ -161,13 +153,7 @@ int	render(t_data *data)
 		while (*str)
 		{
 			if (*str == '1')
-			{
-				// data->stop_wall[k][0] = pos[X];
-				// data->stop_wall[k][1] = pos[Y];
-				//compte les1. remplis le tableau stop_wall avec ls positions de tous le 1. malloc le stop_wall avec lenombre de 1 dans ta map.
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->wall, pos[X], pos[Y]);
-				// k++;
-			}
 			if (*str == '0')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, pos[X], pos[Y]);
 			if (*str == 'E')

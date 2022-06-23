@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:35:33 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 16:44:39 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:40:41 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	ft_parsing_map_c(t_map **tab, t_data *x, char *c)
 	str = map->x;
 	i = 0;
 	while (map->x[i])
-	{
-		if (ft_strncmp(c, "C", 1) == 0
+	{		if (ft_strncmp(c, "C", 1) == 0
 			&& ft_strnstr(map->x, c, ft_strlen(map->x))
 			&& str[i] == 'C')
 			x->count_c++;

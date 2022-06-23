@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 16:53:33 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:29:33 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,9 +137,9 @@ int		ft_is_wall_first(t_map **first);
 int		ft_is_wall_last(t_map **tab);
 int		ft_is_wall_first_case(t_map **tab);
 int		ft_is_wall_last_case(t_map **tab);
-void	ft_execution_parsing_items(t_map **tab, t_data *x);
-void	ft_execution_rectangle(t_map **tab);
-void	ft_execution_wall(t_map **tab);
+int		ft_execution_parsing_items(t_map **tab, t_data *x);
+int		ft_execution_rectangle(t_map **tab);
+int		ft_execution_wall(t_map **tab);
 
 //////////SO_LONG//////////
 void	ft_free_args(char	**args);
@@ -161,4 +161,5 @@ void	ft_len_xy(t_map **tab, t_data *x);
 int		ft_convert_in_char(t_map **tab, t_data *data);
 void	ft_index(t_data *x);
 void	player_move(t_data *world, int dir, int y, int x);
+int		ft_exit_game(t_data *data);
 #endif
