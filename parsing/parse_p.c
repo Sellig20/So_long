@@ -6,36 +6,29 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:31:30 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 17:39:01 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:39:18 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_parsing_map_p(t_map **tab, t_data *x, char *c)
+int		ft_parsing_map_p(t_map **tab, t_data *x, char *c)
 {
 	t_map	*map;
-	int compt;
 
 	map = *tab;
 	while (map)
 	{
-		compt = 0;
 		if (ft_check_doublons_p(&map) == 0)
-		{
 			x->count_p++;
-		}
-		compt++;
 		if ((ft_strncmp(c, "P", 1) == 0 && ft_strnstr(map->x, c, 1000)))
-		{
 			x->count_p++;
-		}
 		map = map->next;
 	}
 	return (x->count_p);
 }
 
-int	ft_check_doublons_p(t_map **liste)
+int		ft_check_doublons_p(t_map **liste)
 {
 	t_map	*a;
 	char	*str;
@@ -63,7 +56,7 @@ int	ft_check_doublons_p(t_map **liste)
 	return (1);
 }
 
-int	ft_return_count_p(t_data *x)
+int		ft_return_count_p(t_data *x)
 {
 	if (x->count_p < 1)
 	{

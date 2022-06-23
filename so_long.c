@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 19:00:10 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:38:15 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	*create(t_data *data)
 	return (data);
 }
 
-int	ft_un_alloc(t_data *data)
+int		ft_un_alloc(t_data *data)
 {
 	if (data->map)
 		ft_lstclear(&data->map);
@@ -39,10 +39,10 @@ int	ft_un_alloc(t_data *data)
 	return (1);
 }
 
-int	ft_get_images(t_data *data)
+int		ft_get_images(t_data *data)
 {
-	int height;
-	int width;
+	int		height;
+	int		width;
 
 	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Cucumbers_02.xpm", &width, &height);
 	if (data->wall == NULL)
@@ -82,7 +82,7 @@ int	ft_get_images(t_data *data)
 	return (1);
 }
 
-void ft_len_x(t_map **tab, t_data *data)
+void	ft_len_x(t_map **tab, t_data *data)
 {
 	int i;
 	char	*str;
@@ -99,7 +99,7 @@ void ft_len_x(t_map **tab, t_data *data)
 	data->len_x--;
 }
 
-void ft_len_y(t_map **tab, t_data *data)
+void	ft_len_y(t_map **tab, t_data *data)
 {
 	t_map *map;
 
@@ -107,14 +107,14 @@ void ft_len_y(t_map **tab, t_data *data)
 	data->len_y = ft_lstsize(&map);
 }
 
-int	refresh(t_data *data)
+int		refresh(t_data *data)
 {
 	usleep(20000);
 	render(data);
 	return (1);
 }
 
-int	is_accessible(t_data *data, char c, int x, int y)
+int		is_accessible(t_data *data, char c, int x, int y)
 {
 	if (c != '0' && c != 'C' && c != 'D' && c != 'P' && !(c == 'E' && data->count_c == 0))
 		return (0);
@@ -131,7 +131,7 @@ int	is_accessible(t_data *data, char c, int x, int y)
 	return (1);
 }
 
-int	deal_key(int key, t_data *data)
+int		deal_key(int key, t_data *data)
 {
 	if (key == 119 && is_accessible(data, data->dtab[data->player->coord.y - 1][data->player->coord.x], data->player->coord.x, data->player->coord.y - 1)) //W
 	{
@@ -165,13 +165,14 @@ int	deal_key(int key, t_data *data)
 	return (1);
 }
 
-int	ft_exit_game(t_data *data)
+int		ft_exit_game(t_data *data)
 {
 	ft_un_alloc(data);
+	ft_free_args(data->dtab);
 	return (1);
 }
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_data	x;
 
@@ -203,6 +204,7 @@ int main(int argc, char **argv)
 	mlx_loop_hook(x.mlx_ptr, refresh, &x);
 	// mlx_hook(x.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &x);
 	mlx_loop(x.mlx_ptr);
+	ft_lstclear(&x.map);
 	// mlx_destroy_display(x.mlx_ptr);
 	// free(x.mlx_ptr);
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:35:33 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 18:40:41 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:39:38 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_parsing_map_c(t_map **tab, t_data *x, char *c)
+int		ft_parsing_map_c(t_map **tab, t_data *x, char *c)
 {
 	t_map	*map;
 	char	*str;
@@ -31,7 +31,7 @@ int	ft_parsing_map_c(t_map **tab, t_data *x, char *c)
 	return (x->count_c);
 }
 
-int	ft_return_count_c(t_data *x)
+int		ft_return_count_c(t_data *x)
 {
 	if (x->count_c < 1)
 	{

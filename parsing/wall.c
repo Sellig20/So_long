@@ -6,13 +6,13 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:36:57 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/22 16:45:12 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:40:07 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_is_wall_first(t_map **first)
+int		ft_is_wall_first(t_map **first)
 {
 	t_map	*ffirst;
 	char	*str;
@@ -34,7 +34,7 @@ int	ft_is_wall_first(t_map **first)
 	return (1);
 }
 
-int	ft_is_wall_last(t_map **tab)
+int		ft_is_wall_last(t_map **tab)
 {
 	t_map	*map;
 	t_map	*last;
@@ -63,7 +63,7 @@ int	ft_is_wall_last(t_map **tab)
 	return (1);
 }
 
-int	ft_is_wall_first_case(t_map **tab)
+int		ft_is_wall_first_case(t_map **tab)
 {
 	t_map	*map;
 	int		i;
@@ -83,10 +83,10 @@ int	ft_is_wall_first_case(t_map **tab)
 	return (1);
 }
 
-int	ft_is_wall_last_case(t_map **tab)
+int		ft_is_wall_last_case(t_map **tab)
 {
 	t_map	*map;
-	int len;
+	int		len;
 
 	map = *tab;
 	len = ft_strlen(map->x);
