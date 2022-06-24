@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 17:43:07 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 21:06:32 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@
 # define MLX_ERROR 1
 
 //////////STRUCTURE//////////
+
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_map	t_map;
 
 struct s_map
@@ -57,8 +67,6 @@ struct	s_coor
 	int	y;
 };
 
-typedef struct s_data	t_data;
-
 typedef struct s_player t_player;
 
 struct	s_player
@@ -66,6 +74,8 @@ struct	s_player
 	int		dir;
 	t_coor	coord;
 };
+
+typedef struct s_data	t_data;
 
 struct	s_data
 {
@@ -78,11 +88,7 @@ struct	s_data
 	int		count_e;
 	int		count_c;
 	t_map	*map;
-	void	*wall;
-	void	*ground;
-	void	*exit;
-	void	*charac;
-	void	*collectible;
+	void	*texture[5];
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	**dtab;
@@ -92,14 +98,39 @@ struct	s_data
 	int		move_count;
 };
 
-typedef struct s_img
+enum	e_axis
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_img;
+	X,
+	Y,
+};
+
+enum	e_texture
+{
+	WALL,
+	GROUND,
+	EXIT,
+	CHARAC,
+	COLLECTIBLE,
+};
+
+typedef struct s_key_value	t_key_value;
+
+struct s_key_value
+{
+	char const				c;
+	enum e_texture const	index;
+	int const				offset[2];
+};
+
+static t_key_value const	g_lookup[] = {
+	{'1', WALL, {0,0} },
+	{'0', GROUND, {0, 0} },
+	{'E', EXIT, {0, 64} },
+	{'P', CHARAC, {0, 0} },
+	{'C', COLLECTIBLE, {0, 0} },
+	{'J', -1, {0, 0} },
+};
+
 
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);

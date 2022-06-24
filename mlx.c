@@ -6,57 +6,11 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 17:16:18 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 21:19:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	handle_no_event(void *x)
-{
-	(void)x;
-	//
-	return (0);
-}
-
-int	handle_input(int keysym, t_data *x)
-{
-	if (keysym == XK_Escape)
-		mlx_destroy_window(x->mlx_ptr, x->win_ptr);
-	return (0);
-}
-
-// int handle_keypress(int keysym, t_data *x)
-// {
-// 	if (keysym == XK_Escape)
-// 		mlx_destroy_window(x->mlx_ptr, x->win_ptr);
-// 	printf("Keypress : %d\n", keysym);
-// 	return (0);
-// }
-
-int	handle_keyrelease(int keysym, void *x)
-{
-	(void)x;
-	printf("Keyrelease : %d\n", keysym);
-	return (0);
-}
-
-int	handle_keypress(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
-	// if (keysym == XK_Up)
-	// {
-	// 	ft_move_c_up();
-	// }
-	return (0);
-}
-
-#define X 0
-#define Y 1
 
 t_player	*ft_create_player(int i, int j)
 {
@@ -70,11 +24,14 @@ t_player	*ft_create_player(int i, int j)
 	play->dir = -1;
 	return (play);
 }
+
 int	ft_convert_in_char(t_map **tab, t_data *data)
 {
-	t_map *map;
-	int i = 0;
+	t_map	*map;
+	int		i;
+
 	map = *tab;
+	i = 0;
 	data->dtab = malloc(sizeof(char *) * data->len_y);
 	if (data->dtab == NULL)
 		return (0);
@@ -91,9 +48,10 @@ int	ft_convert_in_char(t_map **tab, t_data *data)
 
 void	ft_index(t_data *x)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**str;
+
 	i = 0;
 	str = NULL;
 	while (x->dtab[i])
@@ -114,12 +72,11 @@ void	ft_index(t_data *x)
 
 int	render(t_data *data)
 {
-	int	i;
+	int		i;
 	char	*str;
-	int	pos[2];
+	int		pos[2];
 
 	pos[Y] = 0;
-	i = 0;
 	if (data->win_ptr == NULL)
 		return (1);
 	while (data->map)
@@ -128,16 +85,13 @@ int	render(t_data *data)
 		str = data->map->x;
 		while (*str)
 		{
-			if (*str == '1')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->wall, pos[X], pos[Y]);
-			if (*str == '0')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, pos[X], pos[Y]);
-			if (*str == 'E')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->exit, pos[X], pos[Y] + (128 / 2));
-			if (*str == 'P')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, pos[X], pos[Y]);
-			if (*str == 'C')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->collectible, pos[X], pos[Y]);
+			i = 0;
+			while (g_lookup[i].c != 'J' && *str != g_lookup[i].c)
+				i++;
+			if (g_lookup[i].c != 'J')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->texture[g_lookup[i].index], pos[X] + g_lookup[i].offset[X],
+					pos[Y] + g_lookup[i].offset[Y]);
 			pos[X] += 128;
 			str++;
 		}

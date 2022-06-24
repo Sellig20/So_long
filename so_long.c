@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 17:39:46 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:17:01 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ int		ft_un_alloc(t_data *data)
 {
 	if (data->map)
 		ft_lstclear(&data->map);
-	if (data->wall)
-		mlx_destroy_image(data->mlx_ptr, data->wall);
-	if (data->ground)
-		mlx_destroy_image(data->mlx_ptr, data->ground);
-	if (data->exit)
-		mlx_destroy_image(data->mlx_ptr, data->exit);
-	if (data->charac)
-		mlx_destroy_image(data->mlx_ptr, data->charac);
-	if (data->collectible)
-		mlx_destroy_image(data->mlx_ptr, data->collectible);
+	if (data->texture[WALL])
+		mlx_destroy_image(data->mlx_ptr, data->texture[WALL]);
+	if (data->texture[GROUND])
+		mlx_destroy_image(data->mlx_ptr, data->texture[GROUND]);
+	if (data->texture[EXIT])
+		mlx_destroy_image(data->mlx_ptr, data->texture[EXIT]);
+	if (data->texture[CHARAC])
+		mlx_destroy_image(data->mlx_ptr, data->texture[CHARAC]);
+	if (data->texture[COLLECTIBLE])
+		mlx_destroy_image(data->mlx_ptr, data->texture[COLLECTIBLE]);
 	if (data->win_ptr)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	if (data->mlx_ptr)
