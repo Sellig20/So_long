@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:43:20 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:39:46 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,123 +39,6 @@ int		ft_un_alloc(t_data *data)
 	return (1);
 }
 
-int		ft_get_images(t_data *data)
-{
-	int		height;
-	int		width;
-
-	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Cucumbers_02.xpm", &width, &height);
-	if (data->wall == NULL)
-	{
-		ft_putstr_fd("Error :\nimage\n", 2);
-		ft_un_alloc(data);
-		return (0);
-	}
-	data->charac = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Chick_Down.xpm", &width, &height);
-	if (data->charac == NULL)
-	{
-		ft_putstr_fd("Error :\nimage\n", 2);
-		ft_un_alloc(data);
-		return (0);
-	}
-	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Radish.xpm", &width, &height);
-	if (data->collectible == NULL)
-	{
-		ft_putstr_fd("Error :\nimage\n", 2);
-		ft_un_alloc(data);
-		return (0);
-	}
-	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Hole.xpm", &width, &height);
-	if (data->exit == NULL)
-	{
-		ft_putstr_fd("Error :\nimage\n", 2);
-		ft_un_alloc(data);
-		return (0);
-	}
-	data->ground = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Carrots_01.xpm", &width, &height);
-	if (data->ground == NULL)
-	{
-		ft_putstr_fd("Error :\nimage\n", 2);
-		ft_un_alloc(data);
-		return (0);
-	}
-	return (1);
-}
-
-void	ft_len_x(t_map **tab, t_data *data)
-{
-	int i;
-	char	*str;
-	t_map *map;
-
-	i = 0;
-	map = *tab;
-	str = map->x;
-	while (str[i])
-	{
-		data->len_x = ft_strlen(str);
-		i++;
-	}
-	data->len_x--;
-}
-
-void	ft_len_y(t_map **tab, t_data *data)
-{
-	t_map *map;
-
-	map = *tab;
-	data->len_y = ft_lstsize(&map);
-}
-
-int		refresh(t_data *data)
-{
-	usleep(20000);
-	render(data);
-	return (1);
-}
-
-int		is_accessible(t_data *data, char c, int x, int y)
-{
-	if (c != '0' && c != 'C' && c != 'D' && c != 'P' && !(c == 'E' && data->count_c == 0))
-		return (0);
-	else if (c == 'C')
-	{
-		data->count_c--;
-		printf("collectible a get : %d\n", data->count_c);
-		data->dtab[y][x] = 'D';
-		return (1);
-	}
-	else if (c == 'E' && data->count_c == 0)
-		exit(0);
-	data->move_count++;
-	return (1);
-}
-
-int		deal_key(int key, t_data *data)
-{
-	if (key == 119 && is_accessible(data, data->dtab[data->player->coord.y - 1][data->player->coord.x],
-	 data->player->coord.x, data->player->coord.y - 1)) //W
-		ft_elsif_key_w(data);
-	else if (key == 115 && is_accessible(data, data->dtab[data->player->coord.y + 1][data->player->coord.x],
-	 data->player->coord.x, data->player->coord.y + 1)) //S
-		ft_elsif_key_s(data);
-	else if (key == 97 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x - 1],
-	 data->player->coord.x - 1, data->player->coord.y)) //A
-		ft_elsif_key_a(data);
-	else if (key == 100 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x + 1],
-	 data->player->coord.x + 1, data->player->coord.y)) //D
-		ft_elsif_key_d(data);
-	else if (key == 65307)
-		exit(0);
-	return (1);
-}
-
-int		ft_exit_game(t_data *data)
-{
-	ft_un_alloc(data);
-	ft_free_args(data->dtab);
-	return (1);
-}
 
 int		main(int argc, char **argv)
 {
@@ -175,7 +58,6 @@ int		main(int argc, char **argv)
 		return (ft_un_alloc(&x));
 	if (ft_get_images(&x) == 0)
 		return (ft_un_alloc(&x));
-	dprintf(2, "x.len_x %d x.len_y %d\n", x.len_x ,x.len_y);
 	x.win_ptr = mlx_new_window(x.mlx_ptr, x.len_x * 128, x.len_y * 128, "So_long.c");
 	if (x.win_ptr == NULL)
 	{

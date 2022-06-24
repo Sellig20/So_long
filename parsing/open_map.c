@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:05:16 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:45:08 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:19:20 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ int	ft_check_args(int argc, char **argv)
 	return (1);
 }
 
-int	ft_open_map(char **argv, t_data *x)
+void	ft_open_file(char	**argv, t_data *x)
 {
-	t_map	*tab;
-	int		i;
-
-	tab = NULL;
-	i = 0;
 	if (ft_read_infile(argv[1]) == 1)
 		x->file = open(argv[1], O_RDONLY);
 	else
-		return (0);
+		return ;
+}
+
+int	ft_open_map(char **argv, t_data *x)
+{
+	t_map	*tab;
+
+	tab = NULL;
+	ft_open_file(argv, x);
 	if (x->file)
 	{
 		x->str = get_next_line(x->file, 0);

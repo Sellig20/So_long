@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:40:29 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:43:07 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,6 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-
-
-
-
 //////////LINKED LISTS//////////
 t_map	*ft_add_back(t_map *a_list, char *value);
 int		ft_lstsize(t_map **lst);
@@ -140,6 +136,7 @@ int		ft_is_wall_last_case(t_map **tab);
 int		ft_execution_parsing_items(t_map **tab, t_data *x);
 int		ft_execution_rectangle(t_map **tab);
 int		ft_execution_wall(t_map **tab);
+void	ft_open_file(char	**argv, t_data *x);
 
 //////////SO_LONG//////////
 void	ft_free_args(char	**args);
@@ -154,6 +151,7 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 
 void	display_map(t_data *data, int i, int j);
 int		ft_get_images(t_data *data);
+int		ft_get_images_annex(t_data *data, int height, int width);
 t_data	*create(t_data *data);
 void	ft_len_x(t_map **map, t_data *data);
 void	ft_len_y(t_map **map, t_data *data);
@@ -162,8 +160,10 @@ int		ft_convert_in_char(t_map **tab, t_data *data);
 void	ft_index(t_data *x);
 void	player_move(t_data *world, int dir, int y, int x);
 int		ft_exit_game(t_data *data);
-int		ft_intlen(int nb);
-char	*ft_itoa(int nb);
+int		ft_un_alloc(t_data *data);
+int		is_accessible(t_data *data, char c, int x, int y);
+int		deal_key(int key, t_data *data);
+int		refresh(t_data *data);
 
 void	ft_elsif_key_a(t_data *data);
 void	ft_elsif_key_s(t_data *data);

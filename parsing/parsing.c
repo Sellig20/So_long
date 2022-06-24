@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:44:36 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:35:53 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,6 @@ int		ft_execution_parsing_items(t_map **tab, t_data *x)
 	if (ft_return_count_c(x) == 0)
 		return (0);
 	return (1);
-}
-
-void	ft_len_xy(t_map **tab, t_data *x)
-{
-	t_map	*map;
-
-	map = *tab;
-	ft_len_x(&map, x);
-	ft_len_y(&map, x);
-	// if (x->len_x > 20)
-	// {
-	// 	ft_putstr_fd("Error : wrong width\n", 2);
-	// 	return ;
-	// }
-	// if (x->len_y > 11)
-	// {
-	// 	ft_putstr_fd("Error : wrong height\n", 2);
-	// 	return ;
-	// }
 }
 
 int	ft_execution_rectangle(t_map **tab)

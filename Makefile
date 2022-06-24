@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/06/24 16:39:04 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/06/24 17:41:53 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRC					=	so_long.c \
 							linked_lists/ft_lstclear.c \
 							tools.c \
 							mlx.c \
-							deal_key.c \
+							get_images.c \
+							keyboard.c \
+							keyboard_annex.c \
+							x_y.c \
 
 LIBFT = ./libft/libft.a
 

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 15:51:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:41:29 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:39:52 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,23 @@ void	ft_free_args(char	**args)
 	free(args);
 }
 
+int		refresh(t_data *data)
+{
+	usleep(20000);
+	render(data);
+	return (1);
+}
+
 void	ft_display_move(t_data *data)
 {
-		ft_putstr_fd("move = ", 1);
-		write(1, ft_itoa(data->move_count), ft_int_len(data->move_count));
-		write(1, "\n", 1);
+	ft_putstr_fd("move = ", 1);
+	write(1, ft_itoa(data->move_count), ft_int_len(data->move_count));
+	write(1, "\n", 1);
+}
+
+int		ft_exit_game(t_data *data)
+{
+	ft_un_alloc(data);
+	ft_free_args(data->dtab);
+	return (1);
 }

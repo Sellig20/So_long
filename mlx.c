@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 17:01:59 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:16:18 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,6 @@ int	ft_convert_in_char(t_map **tab, t_data *data)
 	return (1);
 }
 
-// int	ft_convert_in_char(t_map **tab, t_data *data)
-// {
-	// t_map *map;
-	// int i = 0;
-	// map = *tab;
-	// data->dtab = malloc(sizeof(ft_lstsize(&map)));
-	// if (data->dtab == NULL)
-		// return (0);
-	// while (map)
-	// {
-		// data->dtab[i] = map->x;
-		// printf("dtab = %s\n", data->dtab[i]);
-		// map = map->next;
-		// i++;
-	// }
-	// ft_index(data);
-	// return (1);
-// }
-
 void	ft_index(t_data *x)
 {
 	int	i;
@@ -118,7 +99,6 @@ void	ft_index(t_data *x)
 	while (x->dtab[i])
 	{
 		j = 0;
-		//printf("%c", x->dtab[i][j]);
 		while (x->dtab[i][j])
 		{
 			if (x->dtab[i][j] == 'P')
@@ -131,10 +111,6 @@ void	ft_index(t_data *x)
 		i++;
 	}
 }
-
-//la croix pour fermer
-//parsing : rectangle + grand
-//parsing : big map et small map posibles ?
 
 int	render(t_data *data)
 {
