@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:35:33 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:39:38 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:45:01 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_return_count_c(t_data *x)
 {
 	if (x->count_c < 1)
 	{
-		write(2, "Error : missing at least one collectible\n", 41);
+		write(2, "Error :\nMissing at least one collectible\n", 41);
 		return (0);
 	}
 	else

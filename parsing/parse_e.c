@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:32:53 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:39:48 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:44:56 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_return_count_e(t_data *x)
 {
 	if (x->count_e < 1)
 	{
-		write(2, "Error : missing at least one exit\n", 34);
+		write(2, "Error :\nMissing at least one exit\n", 34);
 		return (0);
 	}
 	else if (x->count_e == 1)

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:38:15 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:43:20 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,35 @@ int		ft_get_images(t_data *data)
 	data->wall = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Cucumbers_02.xpm", &width, &height);
 	if (data->wall == NULL)
 	{
-		ft_putstr_fd("Error : image\n", 2);
+		ft_putstr_fd("Error :\nimage\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
 	data->charac = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Chick_Down.xpm", &width, &height);
 	if (data->charac == NULL)
 	{
-		ft_putstr_fd("Error : image\n", 2);
+		ft_putstr_fd("Error :\nimage\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
 	data->collectible = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Radish.xpm", &width, &height);
 	if (data->collectible == NULL)
 	{
-		ft_putstr_fd("Error : image\n", 2);
+		ft_putstr_fd("Error :\nimage\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
 	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/Hole.xpm", &width, &height);
 	if (data->exit == NULL)
 	{
-		ft_putstr_fd("Error : image\n", 2);
+		ft_putstr_fd("Error :\nimage\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
 	data->ground = mlx_xpm_file_to_image(data->mlx_ptr, "./texture/GardenBed_Carrots_01.xpm", &width, &height);
 	if (data->ground == NULL)
 	{
-		ft_putstr_fd("Error : image\n", 2);
+		ft_putstr_fd("Error :\nimage\n", 2);
 		ft_un_alloc(data);
 		return (0);
 	}
@@ -133,35 +133,20 @@ int		is_accessible(t_data *data, char c, int x, int y)
 
 int		deal_key(int key, t_data *data)
 {
-	if (key == 119 && is_accessible(data, data->dtab[data->player->coord.y - 1][data->player->coord.x], data->player->coord.x, data->player->coord.y - 1)) //W
-	{
-		// printf("x = %d\n", data->player->coord.x);
-		// printf("y = %d\n", data->player->coord.y);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
-		data->player->coord.y -= 1;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
-	}
-	else if (key == 115 && is_accessible(data, data->dtab[data->player->coord.y + 1][data->player->coord.x], data->player->coord.x, data->player->coord.y + 1)) //S
-	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
-		data->player->coord.y += 1;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
-	}
-	else if (key == 97 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x - 1], data->player->coord.x - 1, data->player->coord.y)) //A
-	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
-		data->player->coord.x -= 1;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
-	}
-	else if (key == 100 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x + 1], data->player->coord.x + 1, data->player->coord.y)) //D
-	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->ground, data->player->coord.x * 128, data->player->coord.y * 128);
-		data->player->coord.x += 1;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->charac, data->player->coord.x * 128, data->player->coord.y * 128);
-	}
+	if (key == 119 && is_accessible(data, data->dtab[data->player->coord.y - 1][data->player->coord.x],
+	 data->player->coord.x, data->player->coord.y - 1)) //W
+		ft_elsif_key_w(data);
+	else if (key == 115 && is_accessible(data, data->dtab[data->player->coord.y + 1][data->player->coord.x],
+	 data->player->coord.x, data->player->coord.y + 1)) //S
+		ft_elsif_key_s(data);
+	else if (key == 97 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x - 1],
+	 data->player->coord.x - 1, data->player->coord.y)) //A
+		ft_elsif_key_a(data);
+	else if (key == 100 && is_accessible(data, data->dtab[data->player->coord.y][data->player->coord.x + 1],
+	 data->player->coord.x + 1, data->player->coord.y)) //D
+		ft_elsif_key_d(data);
 	else if (key == 65307)
 		exit(0);
-	printf("move = %d\n", data->move_count);
 	return (1);
 }
 

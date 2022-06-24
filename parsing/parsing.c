@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:25:43 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:44:36 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_execution_rectangle(t_map **tab)
 	{
 		if (ft_is_rectangle(&map) == 0)
 		{
-			write(2, "Error : Invalid format map\n", 27);
+			write(2, "Error :\nInvalid format map\n", 27);
 			return (0) ;
 		}
 		map = map->next;
@@ -82,7 +82,7 @@ int		ft_execution_wall(t_map **tab)
 	if (ft_is_wall_last(&map) == 0 || ft_is_wall_first(&map) == 0
 		|| ft_is_wall_first_case(&map) == 0 || ft_is_wall_last_case(&map) == 0)
 	{
-		write(2, "Error : no wall around the rectangle\n", 37);
+		write(2, "Error :\nNo wall around the rectangle\n", 37);
 		return (0);
 	}
 	return (1);
@@ -95,12 +95,12 @@ int		ft_read_infile(char *infile)
 	i = 0;
 	if (!(ft_strnstr(&infile[ft_strlen(infile) - 4], ".ber", 4)))
 	{
-		write(2, "Error : Invalid extension for the map\n", 38);
+		write(2, "Error :\nInvalid extension for the map\n", 38);
 		return (0);
 	}
 	if (ft_strncmp(infile, ".ber", 4) == 0)
 	{
-		write(2, "Error : Invalid infile\n", 23);
+		write(2, "Error :\nInvalid infile\n", 23);
 		return (0);
 	}
 	return (1);

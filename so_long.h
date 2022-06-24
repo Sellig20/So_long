@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 18:29:33 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:40:29 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,4 +162,12 @@ int		ft_convert_in_char(t_map **tab, t_data *data);
 void	ft_index(t_data *x);
 void	player_move(t_data *world, int dir, int y, int x);
 int		ft_exit_game(t_data *data);
+int		ft_intlen(int nb);
+char	*ft_itoa(int nb);
+
+void	ft_elsif_key_a(t_data *data);
+void	ft_elsif_key_s(t_data *data);
+void	ft_elsif_key_d(t_data *data);
+void	ft_elsif_key_w(t_data *data);
+void	ft_display_move(t_data *data);
 #endif

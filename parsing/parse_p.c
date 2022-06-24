@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:31:30 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:39:18 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:44:50 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_return_count_p(t_data *x)
 {
 	if (x->count_p < 1)
 	{
-		write(2, "Error : missing P character\n", 28);
+		write(2, "Error :\nMissing P character\n", 28);
 		return (0);
 	}
 	else if (x->count_p == 1)
@@ -70,7 +70,7 @@ int		ft_return_count_p(t_data *x)
 	}
 	else
 	{
-		write(2, "Error : two or more P characters\n", 33);
+		write(2, "Error :\nTwo or more P characters\n", 33);
 		return (0);
 	}
 	return (1);
