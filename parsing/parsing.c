@@ -6,19 +6,22 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 17:35:53 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:00:33 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int		ft_execution_parsing_items(t_map **tab, t_data *x)
+int	ft_execution_parsing_items(t_map **tab, t_data *x)
 {
 	t_map	*map;
 
 	map = *tab;
 	if (ft_execution_rectangle(&map) == 0)
+	{
+		
 		return (0);
+	}
 	if (ft_execution_wall(&map) == 0)
 		return (0);
 	ft_len_xy(&map, x);
@@ -48,14 +51,14 @@ int	ft_execution_rectangle(t_map **tab)
 		if (ft_is_rectangle(&map) == 0)
 		{
 			write(2, "Error :\nInvalid format map\n", 27);
-			return (0) ;
+			return (0);
 		}
 		map = map->next;
 	}
 	return (1);
 }
 
-int		ft_execution_wall(t_map **tab)
+int	ft_execution_wall(t_map **tab)
 {
 	t_map	*map;
 
@@ -69,7 +72,7 @@ int		ft_execution_wall(t_map **tab)
 	return (1);
 }
 
-int		ft_read_infile(char *infile)
+int	ft_read_infile(char *infile)
 {
 	int		i;
 
@@ -87,7 +90,7 @@ int		ft_read_infile(char *infile)
 	return (1);
 }
 
-int		ft_is_rectangle(t_map **tab)
+int	ft_is_rectangle(t_map **tab)
 {
 	t_map	*map;
 	t_map	*last;

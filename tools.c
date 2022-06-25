@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 15:51:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 18:23:02 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:24:32 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ int		refresh(t_data *data)
 
 void	ft_display_move(t_data *data)
 {
-	ft_putstr_fd("move = ", 1);
-	write(1, ft_itoa(data->move_count), ft_int_len(data->move_count));
+	char	*str;
+
+	str =  ft_itoa(data->move_count);
+	ft_putstr_fd("Move = ", 1);
+	write(1, str ,ft_int_len(data->move_count));
 	write(1, "\n", 1);
+	free(str);
 }
 
 int		ft_exit_game(t_data *data)

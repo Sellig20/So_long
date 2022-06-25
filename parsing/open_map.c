@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:05:16 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 17:19:20 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:24:45 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,20 @@ int	ft_open_map(char **argv, t_data *x)
 				return (0);
 			}
 			x->len++;
+			//free(x->str);
 			x->str = get_next_line(x->file, 0);
 		}
+		//free(x->str);
 	}
 	get_next_line(x->file, 1);
 	if (ft_execution_parsing_items(&tab, x) == 0)
+	{
+		ft_lstclear(&tab);
 		return (0);
+	}
 	ft_convert_in_char(&tab, x);
+	//x->map = malloc(sizeof(t_map) * x->len_x);
 	x->map = tab;
+	ft_lstclear(&tab);
 	return (1);
 }

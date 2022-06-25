@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 20:17:01 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:30:04 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_un_alloc(t_data *data)
 {
 	if (data->map)
 		ft_lstclear(&data->map);
+	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	if (data->texture[WALL])
 		mlx_destroy_image(data->mlx_ptr, data->texture[WALL]);
 	if (data->texture[GROUND])
@@ -49,9 +50,15 @@ int		main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	if (ft_check_args(argc, argv) == 0)
-		return (1);
+	{
+		ft_lstclear(&x.map);
+		return (0);
+	}
 	if (ft_open_map(argv, &x) == 0)
-		return (1);
+	{
+		ft_lstclear(&x.map);
+		return (0);
+	}
 	close(x.file);
 	x.mlx_ptr = mlx_init();
 	if (x.mlx_ptr == NULL)
@@ -73,6 +80,6 @@ int		main(int argc, char **argv)
 	mlx_loop(x.mlx_ptr);
 	ft_lstclear(&x.map);
 	// mlx_destroy_display(x.mlx_ptr);
-	// free(x.mlx_ptr);
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 15:54:16 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/04 16:46:35 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:15:57 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,16 @@ void	ft_lstclear(t_map **tab)
 		*tab = map;
 	}
 }
+
+// void	ft_lstclear(t_map **liste)
+// {
+// 	t_map	*tmp;
+
+// 	tmp = *liste;
+// 	while (*liste)
+// 	{
+// 		tmp = (*liste)->next;
+// 		free(*liste);
+// 		*liste = tmp;
+// 	}
+// }

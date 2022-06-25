@@ -6,13 +6,13 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:31:30 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 16:44:50 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:46:09 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int		ft_parsing_map_p(t_map **tab, t_data *x, char *c)
+int	ft_parsing_map_p(t_map **tab, t_data *x, char *c)
 {
 	t_map	*map;
 
@@ -28,7 +28,7 @@ int		ft_parsing_map_p(t_map **tab, t_data *x, char *c)
 	return (x->count_p);
 }
 
-int		ft_check_doublons_p(t_map **liste)
+int	ft_check_doublons_p(t_map **liste)
 {
 	t_map	*a;
 	char	*str;
@@ -56,7 +56,7 @@ int		ft_check_doublons_p(t_map **liste)
 	return (1);
 }
 
-int		ft_return_count_p(t_data *x)
+int	ft_return_count_p(t_data *x)
 {
 	if (x->count_p < 1)
 	{

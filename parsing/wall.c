@@ -6,13 +6,13 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:36:57 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/23 22:40:07 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:49:28 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int		ft_is_wall_first(t_map **first)
+int	ft_is_wall_first(t_map **first)
 {
 	t_map	*ffirst;
 	char	*str;
@@ -24,9 +24,7 @@ int		ft_is_wall_first(t_map **first)
 	{
 		str = ffirst->x;
 		if (str[i] == '1' || str[i] == '\n')
-		{
-				//
-		}
+				ffirst->garbage++;
 		else
 			return (0);
 		i++;
@@ -34,7 +32,7 @@ int		ft_is_wall_first(t_map **first)
 	return (1);
 }
 
-int		ft_is_wall_last(t_map **tab)
+int	ft_is_wall_last(t_map **tab)
 {
 	t_map	*map;
 	t_map	*last;
@@ -53,9 +51,7 @@ int		ft_is_wall_last(t_map **tab)
 	while (last->x[i])
 	{
 		if (strl[i] == '1' || strl[i] == '\n')
-		{
-			//coucou
-		}
+			map->garbage++;
 		else
 			return (0);
 		i++;
@@ -63,7 +59,7 @@ int		ft_is_wall_last(t_map **tab)
 	return (1);
 }
 
-int		ft_is_wall_first_case(t_map **tab)
+int	ft_is_wall_first_case(t_map **tab)
 {
 	t_map	*map;
 	int		i;
@@ -73,9 +69,7 @@ int		ft_is_wall_first_case(t_map **tab)
 	while (map)
 	{
 		if (map->x[i] == '1')
-		{
-			//
-		}
+			map->garbage++;
 		else
 			return (0);
 		map = map->next;
@@ -83,7 +77,7 @@ int		ft_is_wall_first_case(t_map **tab)
 	return (1);
 }
 
-int		ft_is_wall_last_case(t_map **tab)
+int	ft_is_wall_last_case(t_map **tab)
 {
 	t_map	*map;
 	int		len;
@@ -93,9 +87,7 @@ int		ft_is_wall_last_case(t_map **tab)
 	while (map)
 	{
 		if (map->x[len - 2] == '1')
-		{
-			//
-		}
+			map->garbage++;
 		else
 			return (0);
 		map = map->next;

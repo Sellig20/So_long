@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/24 21:06:32 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:23:38 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map	t_map;
 struct s_map
 {
 	char	*x;
+	int		garbage;
 	t_map	*next;
 };
 
@@ -201,4 +202,5 @@ void	ft_elsif_key_s(t_data *data);
 void	ft_elsif_key_d(t_data *data);
 void	ft_elsif_key_w(t_data *data);
 void	ft_display_move(t_data *data);
+
 #endif

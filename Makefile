@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/06/24 17:41:53 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/06/25 16:43:46 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 clean:
-	# $(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./libft
 	$(MAKE) clean -C ./mlx
 	rm -f $(OBJ)
 

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:59:44 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 19:22:25 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:34:45 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ void	ft_bzero(void *s, size_t n);
 void	ft_putstr_fd(char *s, int fd);
 
 #endif
-
