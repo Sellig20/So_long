@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/25 19:23:38 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:28:44 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,22 @@ typedef struct s_data	t_data;
 
 struct	s_data
 {
-	int		file;
-	char	*str;
-	int		len;
-	int		len_x;
-	int		len_y;
-	int		count_p;
-	int		count_e;
-	int		count_c;
-	t_map	*map;
-	void	*texture[5];
-	void	*mlx_ptr;
-	void	*win_ptr;
-	char	**dtab;
-	int		item_count;
-	t_player	*player;
-	int		**stop_wall;
-	int		move_count;
+	int			file;
+	char		*str;
+	int			len;
+	int			len_x;
+	int			len_y;
+	int			count_p;
+	int			count_e;
+	int			count_c;
+	t_map		*map;
+	void		*texture[5];
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**dtab;
+	int			item_count;
+	t_player	player;
+	int			move_count;
 };
 
 enum	e_axis

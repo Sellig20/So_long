@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:36:41 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/25 19:23:50 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:33:18 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	is_accessible(t_data *data, char c, int x, int y)
 		data->move_count++;
 		ft_display_move(data);
 		ft_un_alloc(data);
-		free(data->mlx_ptr);
-		ft_free_args(data->dtab);
+		// free(data->mlx_ptr);
+		// ft_free_args(data->dtab);
 		exit(0);
 	}
 	data->move_count++;
@@ -39,23 +39,26 @@ int	is_accessible(t_data *data, char c, int x, int y)
 
 int	deal_key(int key, t_data *data)
 {
-	if (key == 119 && is_accessible(data, data->dtab[data->player->coord.y - 1]
-			[data->player->coord.x], data->player->coord.x,
-			data->player->coord.y - 1))
+	if (key == 119 && is_accessible(data, data->dtab[data->player.coord.y - 1]
+			[data->player.coord.x], data->player.coord.x,
+			data->player.coord.y - 1))
 		ft_elsif_key_w(data);
 	else if (key == 115 && is_accessible(data,
-			data->dtab[data->player->coord.y + 1][data->player->coord.x],
-		data->player->coord.x, data->player->coord.y + 1))
+			data->dtab[data->player.coord.y + 1][data->player.coord.x],
+		data->player.coord.x, data->player.coord.y + 1))
 		ft_elsif_key_s(data);
-	else if (key == 97 && is_accessible(data, data->dtab[data->player->coord.y]
-			[data->player->coord.x - 1], data->player->coord.x - 1,
-			data->player->coord.y))
+	else if (key == 97 && is_accessible(data, data->dtab[data->player.coord.y]
+			[data->player.coord.x - 1], data->player.coord.x - 1,
+			data->player.coord.y))
 		ft_elsif_key_a(data);
-	else if (key == 100 && is_accessible(data, data->dtab[data->player->coord.y]
-			[data->player->coord.x + 1], data->player->coord.x + 1,
-			data->player->coord.y))
+	else if (key == 100 && is_accessible(data, data->dtab[data->player.coord.y]
+			[data->player.coord.x + 1], data->player.coord.x + 1,
+			data->player.coord.y))
 		ft_elsif_key_d(data);
 	else if (key == 65307)
+	{
+		ft_un_alloc(data);
 		exit(0);
+	}
 	return (1);
 }
