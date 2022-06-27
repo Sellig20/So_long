@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:05:16 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 15:25:23 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:24:09 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	ft_open_map(char **argv, t_data *x)
 		ft_free_args(x->dtab);
 		return (0);
 	}
-	
 	x->map = tab;
 	return (1);
 }

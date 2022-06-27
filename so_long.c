@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 16:01:49 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:11:33 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ int		main(int argc, char **argv)
 	// mlx_hook(x.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &x);
 	mlx_loop(x.mlx_ptr);
 	// mlx_destroy_display(x.mlx_ptr);
-
 	return (0);
 }

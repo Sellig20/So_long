@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:36:41 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 15:33:18 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:13:33 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	is_accessible(t_data *data, char c, int x, int y)
 	else if (c == 'C')
 	{
 		data->count_c--;
+		data->move_count++;
 		//printf("collectible a get : %d\n", data->count_c);
 		data->dtab[y][x] = 'D';
 		return (1);
