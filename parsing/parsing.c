@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:39:55 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 20:35:36 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:56:59 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,10 @@ int	ft_execution_rectangle(t_map **tab)
 	t_map	*map;
 
 	map = *tab;
-	// while (map)
-	// {
-	 	if (ft_is_rectangle(&map) == 0)
-		{
-			write(2, "Error :\nInvalid format map\n", 27);
-			return (0);
-	 	// }
-		// map = map->next;
+	if (ft_is_rectangle(&map) == 0)
+	{
+		write(2, "Error :\nInvalid format map\n", 27);
+		return (0);
 	}
 	return (1);
 }
@@ -73,9 +69,6 @@ int	ft_execution_wall(t_map **tab)
 
 int	ft_read_infile(char *infile)
 {
-	int		i;
-
-	i = 0;
 	if (!(ft_strnstr(&infile[ft_strlen(infile) - 4], ".ber", 4)))
 	{
 		write(2, "Error :\nInvalid extension for the map\n", 38);
@@ -93,13 +86,9 @@ int	ft_is_rectangle(t_map **tab)
 {
 	t_map	*map;
 	t_map	*last;
-	char	*str;
-	int		i;
 	int		len;
 
 	map = *tab;
-	str = map->x;
-	i = 0;
 	while (map->next)
 	{
 		map = map->next;
@@ -108,14 +97,9 @@ int	ft_is_rectangle(t_map **tab)
 	map = *tab;
 	while (map)
 	{
-		// while (str[i])
-		// {
-			printf("str[i] = %s\n", map->x);
-			len = ft_strlen(map->x);
-			if (len != ft_strlen(last->x))
-				return (0);
-		// 	i++;
-		// }
+		len = ft_strlen(map->x);
+		if (len != ft_strlen(last->x))
+			return (0);
 		map = map->next;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:36:31 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/05/27 17:13:26 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:46:21 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_read_text(int fd, char *final)
 		if (var_read > 0)
 		{
 			buf[var_read] = '\0';
-			tmp = ft_strjoin_gnl(final, buf);
+			tmp = ft_strjoin(final, buf);
 			final = tmp;
 		}
 	}
@@ -95,7 +95,7 @@ char	*ft_save_line(char *str)
 		free(str);
 		return (0);
 	}
-	final = malloc(sizeof(char) * (ft_strlen_gnl(str) - i + 1));
+	final = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
 	if (!final)
 	{
 		free(str);

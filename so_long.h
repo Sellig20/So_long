@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 18:23:04 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:55:39 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ int		ft_is_wall_last_case(t_map **tab);
 int		ft_execution_parsing_items(t_map **tab, t_data *x);
 int		ft_execution_rectangle(t_map **tab);
 int		ft_execution_wall(t_map **tab);
-void	ft_open_file(char	**argv, t_data *x);
+int		ft_open_file(char	**argv, t_data *x);
 
 //////////SO_LONG//////////
 void	ft_free_args(char	**args);

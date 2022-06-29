@@ -6,7 +6,7 @@
 #    By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:35:34 by jecolmou          #+#    #+#              #
-#    Updated: 2022/06/25 16:43:46 by jecolmou         ###   ########.fr        #
+#    Updated: 2022/06/28 13:36:36 by jecolmou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,14 @@ FL_MLX	=	 -ldl -lmlx -Lmlx -lm -lXext -lX11 -Imlx mlx/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -o $(NAME) -Llibft -lft -Lmlx -lmlx
+
+$(LIBFT) :
 	$(MAKE) -C ./libft
+
+$(MLX) :
 	$(MAKE) -C ./mlx
-	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -o $(NAME)  $(LIBFT) $(MLX) -g
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
@@ -64,5 +68,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+malloc_test: $(OBJ) $(MLX) $(LIBFT)
+	$(MAKE) -C ./mlx
+	$(CC) $(CFLAGS) -fsanitize=undefined -rdynamic -o $@ ${OBJ} $(FL_MLX) -L. -lmallocator -Llibft -lft -Lmlx -lmlx
 
 .PHONY: clean fclean re

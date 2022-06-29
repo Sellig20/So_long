@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:05:16 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 19:24:09 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:14:20 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,23 @@ int	ft_check_args(int argc, char **argv)
 	return (1);
 }
 
-void	ft_open_file(char	**argv, t_data *x)
+int	ft_open_file(char	**argv, t_data *x)
 {
+	x->file = open(argv[1], O_DIRECTORY);
+	if (x->file > 2)
+	{
+		close(x->file);
+		ft_putstr_fd("Error :\nInvalid folder\n", 2);
+		return (0);
+	}
 	if (ft_read_infile(argv[1]) == 1)
 		x->file = open(argv[1], O_RDONLY);
-	else
-		return ;
+	if (x->file == -1)
+	{
+		ft_putstr_fd("Error :\nInvalid file\n", 2);
+		return (0);
+	}
+	return (1);
 }
 
 int	ft_open_map(char **argv, t_data *x)
@@ -40,7 +51,8 @@ int	ft_open_map(char **argv, t_data *x)
 	t_map	*tab;
 
 	tab = NULL;
-	ft_open_file(argv, x);
+	if (ft_open_file(argv, x) == 0)
+		return (0);
 	if (x->file)
 	{
 		x->str = get_next_line(x->file, 0);
@@ -49,14 +61,12 @@ int	ft_open_map(char **argv, t_data *x)
 			tab = ft_add_back(tab, x->str);
 			if (tab == NULL)
 			{
-				ft_lstclear(&tab);
+				free(x->str);
 				return (0);
 			}
 			x->len++;
-			//free(x->str);
 			x->str = get_next_line(x->file, 0);
 		}
-		//free(x->str);
 	}
 	get_next_line(x->file, 1);
 	if (ft_execution_parsing_items(&tab, x) == 0)
