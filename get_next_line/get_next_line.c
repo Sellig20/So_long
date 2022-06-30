@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:36:31 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/30 13:28:20 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:45:30 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*ft_read_text(int fd, char *final)
 			buf[var_read] = '\0';
 			tmp = ft_strjoin(final, buf);
 			if (tmp == NULL)
-				return (free(final),free(buf), NULL);
+				return (free(final), free(buf), NULL);
 			final = tmp;
 		}
- 	}
+	}
 	free(buf);
 	if (var_read == -1)
 		return (NULL);
@@ -113,22 +113,22 @@ char	*ft_save_line(char *str)
 }
 
 /**
- * @brief Get the next line object
+ * Get the next line object
  *
- * @param fd
+ *
  * @param reset	used for free the static variable
  * 				0 is for not free the static
  * 				1 is for free the static
  *  @return char*
  */
+
 char	*get_next_line(int fd, int reset)
 {
 	char		*line;
 	static char	*buf;
 
-	if (reset){
+	if (reset)
 		return (free(buf), NULL);
-	}
 	if (fd < 0)
 		return (0);
 	buf = ft_read_text(fd, buf);

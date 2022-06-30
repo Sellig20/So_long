@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/30 13:33:25 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:40:49 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	*create(t_data *data)
 	return (data);
 }
 
-int		ft_un_alloc(t_data *data)
+int	ft_un_alloc(t_data *data)
 {
 	if (data->map)
 		ft_lstclear(&data->map);
@@ -47,8 +47,7 @@ int		ft_un_alloc(t_data *data)
 	return (1);
 }
 
-
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	x;
 
@@ -63,7 +62,8 @@ int		main(int argc, char **argv)
 		return (ft_un_alloc(&x));
 	if (ft_get_images(&x) == 0)
 		return (1);
-	x.win_ptr = mlx_new_window(x.mlx_ptr, x.len_x * 128, x.len_y * 128, "So_long.c");
+	x.win_ptr = mlx_new_window(x.mlx_ptr, x.len_x * 128,
+			x.len_y * 128, "So_long.c");
 	if (x.win_ptr == NULL)
 	{
 		ft_un_alloc(&x);

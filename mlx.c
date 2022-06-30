@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/30 13:36:20 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:39:04 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,34 +70,38 @@ void	ft_index(t_data *x)
 	}
 }
 
+void	ft_invocation_render(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx_ptr,
+		data->win_ptr, data->texture[g_lookup[data->ri].index],
+		data->pos[X] + g_lookup[data->ri].offset[X],
+		data->pos[Y] + g_lookup[data->ri].offset[Y]);
+}
+
 int	render(t_data *data)
 {
-	int		i;
 	char	*str;
-	int		pos[2];
 	t_map	*map;
 
 	map = data->map;
-	pos[Y] = 0;
+	data->pos[Y] = 0;
 	if (data->win_ptr == NULL)
 		return (1);
 	while (map)
 	{
-		pos[X] = 0;
+		data->pos[X] = 0;
 		str = map->x;
 		while (*str)
 		{
-			i = 0;
-			while (g_lookup[i].c != 'J' && *str != g_lookup[i].c)
-				i++;
-			if (g_lookup[i].c != 'J')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-					data->texture[g_lookup[i].index], pos[X] + g_lookup[i].offset[X],
-					pos[Y] + g_lookup[i].offset[Y]);
-			pos[X] += 128;
+			data->ri = 0;
+			while (g_lookup[data->ri].c != 'J' && *str != g_lookup[data->ri].c)
+				data->ri++;
+			if (g_lookup[data->ri].c != 'J')
+				ft_invocation_render(data);
+			data->pos[X] += 128;
 			str++;
 		}
-		pos[Y] += 128;
+		data->pos[Y] += 128;
 		map = map->next;
 	}
 	return (0);

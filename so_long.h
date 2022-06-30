@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/30 13:43:39 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:38:32 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ struct	s_data
 	int			count_e;
 	int			count_c;
 	t_map		*map;
-	t_map		*
 	void		*texture[5];
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -97,6 +96,8 @@ struct	s_data
 	int			item_count;
 	t_player	player;
 	int			move_count;
+	int			pos[2];
+	int			ri;
 };
 
 enum	e_axis
@@ -172,14 +173,9 @@ int		ft_open_file(char	**argv, t_data *x);
 
 //////////SO_LONG//////////
 void	ft_free_args(char	**args);
-int		handle_no_event(void *data);
-int		handle_input(int keysym, t_data *x);
-int		handle_keypress(int keysym, t_data *x);
-int		handle_keyrelease(int keysym, void *data);
 int		render(t_data *data);
 int		render_rect(t_img *img, t_rect rect);
 void	render_background(t_img *img, int color);
-void	img_pix_put(t_img *img, int x, int y, int color);
 
 void	display_map(t_data *data, int i, int j);
 int		ft_get_images(t_data *data);
@@ -196,7 +192,6 @@ int		ft_un_alloc(t_data *data);
 int		is_accessible(t_data *data, char c, int x, int y);
 int		deal_key(int key, t_data *data);
 int		refresh(t_data *data);
-
 void	ft_elsif_key_a(t_data *data);
 void	ft_elsif_key_s(t_data *data);
 void	ft_elsif_key_d(t_data *data);
