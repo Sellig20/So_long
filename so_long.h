@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/30 15:38:32 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:27:21 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdbool.h>
-# include "minilibx-linux/mlx.h"
+# include "mlx/mlx.h"
 # include "libft/libft.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
