@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:36:31 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/29 18:46:21 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:28:20 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_read_text(int fd, char *final)
 
 	buf = malloc(sizeof(char) * 2);
 	if (!buf)
-		return (0);
+		return (free(final), NULL);
 	var_read = 1;
 	while (ft_is_a_line(final) == 0 && var_read > 0)
 	{
@@ -29,9 +29,11 @@ char	*ft_read_text(int fd, char *final)
 		{
 			buf[var_read] = '\0';
 			tmp = ft_strjoin(final, buf);
+			if (tmp == NULL)
+				return (free(final),free(buf), NULL);
 			final = tmp;
 		}
-	}
+ 	}
 	free(buf);
 	if (var_read == -1)
 		return (NULL);
@@ -64,9 +66,9 @@ char	*ft_extract_line(char *s1)
 	while (s1[i] && s1[i] != '\n')
 		i++;
 	new_line = malloc(sizeof(char) * (i + 2));
-	ft_bzero(new_line, i + 2);
 	if (!new_line)
-		return (0);
+		return (NULL);
+	ft_bzero(new_line, i + 2);
 	i = 0;
 	while (s1[i] && (s1[i] != '\n'))
 	{
@@ -99,7 +101,7 @@ char	*ft_save_line(char *str)
 	if (!final)
 	{
 		free(str);
-		return (0);
+		return (NULL);
 	}
 	i++;
 	j = 0;
@@ -110,21 +112,33 @@ char	*ft_save_line(char *str)
 	return (final);
 }
 
+/**
+ * @brief Get the next line object
+ *
+ * @param fd
+ * @param reset	used for free the static variable
+ * 				0 is for not free the static
+ * 				1 is for free the static
+ *  @return char*
+ */
 char	*get_next_line(int fd, int reset)
 {
 	char		*line;
 	static char	*buf;
 
-	if (reset)
+	if (reset){
 		return (free(buf), NULL);
+	}
 	if (fd < 0)
 		return (0);
 	buf = ft_read_text(fd, buf);
 	if (!buf)
-		return (0);
+		return (NULL);
 	line = ft_extract_line(buf);
 	if (!line)
-		return (0);
+	{
+		return (NULL);
+	}
 	buf = ft_save_line(buf);
 	return (line);
 }

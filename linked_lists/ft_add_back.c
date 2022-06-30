@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:07:37 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/08 18:53:55 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:59:05 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map	*ft_add_back(t_map *a_list, char *value)
 	t_map	*tmp;
 
 	a = malloc(sizeof(t_map));
-	if (a == NULL)
+	if (a == NULL || value == NULL)
 		return (NULL);
 	a->x = value;
 	a->next = NULL;

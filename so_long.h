@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:40:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/28 12:55:39 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:43:39 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ struct	s_data
 	int			count_e;
 	int			count_c;
 	t_map		*map;
+	t_map		*
 	void		*texture[5];
 	void		*mlx_ptr;
 	void		*win_ptr;

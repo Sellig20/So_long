@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:57:48 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/29 19:49:23 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:33:25 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int		main(int argc, char **argv)
 	t_data	x;
 
 	x = (t_data){0};
-	// ft_bzero(&x, sizeof(t_data));
 	if (ft_check_args(argc, argv) == 0)
 		return (ft_lstclear(&x.map), 0);
 	if (ft_open_map(argv, &x) == 0)
@@ -64,11 +63,10 @@ int		main(int argc, char **argv)
 		return (ft_un_alloc(&x));
 	if (ft_get_images(&x) == 0)
 		return (1);
-		// return (ft_un_alloc(&x));
 	x.win_ptr = mlx_new_window(x.mlx_ptr, x.len_x * 128, x.len_y * 128, "So_long.c");
 	if (x.win_ptr == NULL)
 	{
-		free(x.win_ptr);
+		ft_un_alloc(&x);
 		return (MLX_ERROR);
 	}
 	mlx_hook(x.win_ptr, 2, 1L << 0, deal_key, &x);

@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:38:17 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/29 18:46:05 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:59:25 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	final = malloc(sizeof(char) * (ft_strlen_gnl(s1)
 				+ (ft_strlen_gnl(s2)) + 1));
 	if (!final)
+	{
 		free_join(final, i);
+		return (NULL);
+	}
 	while (s1 && (char)s1[i])
 	{
 		final[i] = (char)s1[i];

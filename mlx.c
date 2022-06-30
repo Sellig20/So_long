@@ -6,7 +6,7 @@
 /*   By: jecolmou <jecolmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:01:54 by jecolmou          #+#    #+#             */
-/*   Updated: 2022/06/27 16:02:21 by jecolmou         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:36:20 by jecolmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_convert_in_char(t_map **tab, t_data *data)
 		return (0);
 	while (map)
 	{
-		// data->dtab[i] = malloc(sizeof(char) * data->len_x);
 		data->dtab[i] = map->x;
 		map = map->next;
 		i++;
@@ -103,4 +102,3 @@ int	render(t_data *data)
 	}
 	return (0);
 }
-
